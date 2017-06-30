@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
-using System.Text;
 using System.Threading.Tasks;
 using AlphaThea.Services;
-using Newtonsoft.Json;
 
 
 namespace AlphaThea.ViewModels
