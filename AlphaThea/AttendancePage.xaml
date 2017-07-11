@@ -1,5 +1,17 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AlphaThea.AttendancePage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xuni="clr-namespace:Xuni.Forms.FlexPie;assembly=Xuni.Forms.FlexPie"
+    x:Class="AlphaThea.AttendancePage">
+    <StackLayout Padding="40" Spacing="10">
+    <Grid x:Name="root" VerticalOptions="FillAndExpand">
+
+      <!--<xuni:FlexPie InnerRadius ="0.3" BindingName = "Name" Binding = "Value" x:Name = "flexPie" />-->
+        <!--<xuni:FlexPie InnerRadius ="0.3" ItemsSource = "{Binding AttendancePie}" BindingName = "Name" Binding = "Value" x:Name = "pieChart" />-->
+        <xuni:FlexPie InnerRadius ="0.3" IsAnimated = "false" BindingName = "Name" Binding = "Value" x:Name = "pieChart" />
+   </Grid>
+  </StackLayout>
+   
+<!--<Button Text = "Refresh" Command = "{Binding FetchAttendanceDataCommand}" HorizontalOptions = "Center" VerticalOptions = "Center"/>-->
+
 </ContentPage>

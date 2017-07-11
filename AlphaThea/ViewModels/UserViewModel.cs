@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
@@ -17,7 +16,7 @@ namespace AlphaThea.ViewModels
 
         public UserViewModel()
         {
-            userdatamanager = new UserDataManager(new RestService());
+            //userdatamanager = new UserDataManager(new RestService());
 
             IsBusy = false;
 
@@ -148,7 +147,8 @@ namespace AlphaThea.ViewModels
                 IsBusy = true;
 
                 var usr = new User();
-				usr = await userdatamanager.RefreshUserDataAsync();
+                //usr = await userdatamanager.RefreshUserDataAsync();
+                usr = await App.UsrDataManager.RefreshUserDataAsync();
 
 				Uid = usr.uid;
 				Username = usr.username;
@@ -158,9 +158,6 @@ namespace AlphaThea.ViewModels
 				FirstName = usr.firstName;
 				LastName = usr.lastName;
 				Roles = usr.roles;
-
-				var usrattendances = new List<UserAttendance>();
-				usrattendances = await userdatamanager.RefreshUserAttendanceAsync();
 
                 IsBusy = false;
 

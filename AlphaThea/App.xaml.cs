@@ -1,14 +1,18 @@
 ﻿using Xamarin.Forms;
 using System;
+using AlphaThea.Services;
 
 namespace AlphaThea
 {
     public partial class App : Application
     {
+
+        public static UserDataManager UsrDataManager { get; private set; }
+
         public App()
         {
             InitializeComponent();
-
+            UsrDataManager = new UserDataManager(new RestService());
             MainPage = new AlphaTheaPage();
         }
 

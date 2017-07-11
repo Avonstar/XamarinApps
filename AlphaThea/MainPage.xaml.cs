@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AlphaThea.ViewModels;
 
 using Xamarin.Forms;
 
@@ -10,6 +11,7 @@ namespace AlphaThea
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new UserViewModel();
         }
     }
 }

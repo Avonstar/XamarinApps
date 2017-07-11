@@ -22,7 +22,7 @@ namespace AlphaThea.Services
 
         }
 
-        public Task<List<UserAttendance>> RefreshUserAttendanceAsync()
+        public Task<Attendance> RefreshUserAttendanceAsync()
         {
 
             return restService.GetUserAttendanceAsync();

@@ -12,7 +12,9 @@
 
         public static string UsersUrl = "http://api.s17039536.onlinehome-server.info/web/api/user";
 
-        public static string SpecificUserUrl = "http://api.s17039536.onlinehome-server.info/web/api/user/357";
+        //public static string SpecificUserUrl = "http://api.s17039536.onlinehome-server.info/web/api/user/357";
+
+        public static string SpecificUserUrl = "http://api.s17039536.onlinehome-server.info/web/api/user/1747";
 
 
         //public static string AttendanceUrl ="http://api.s17039536.onlinehome-server.info/web/api/attendance/?sort=c.created&direction=DESC&userId=UID&limit=180";

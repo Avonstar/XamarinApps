@@ -1,6 +1,9 @@
 ﻿using System;
 namespace AlphaThea.Models
 {
+
+    //Models the user attendance data returned as JSON
+
     public class UserAttendance
     {
 		public int id { get; set; }

@@ -1,32 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AlphaThea" 
     x:Class="AlphaThea.AlphaTheaPage">
-    
-    <StackLayout Padding="40" Spacing="10">
 
-        <Label Text="Thames Christian College School" TextColor="Blue" VerticalOptions="Center" HorizontalOptions="Center" />
+    <TabbedPage.Children>
+
+        <local:MainPage Title="Main">
+           <StackLayout Padding="40" Spacing="10">
+                <Image Source="thameslogo.png" />
+                <!--<Label Text="Thames Christian College School" TextColor="Blue" VerticalOptions="Center" HorizontalOptions="Center" />-->
+                
+                <Label Text="First Name"/>
+                <Entry Text="{Binding FirstName}" Placeholder="First Name" BackgroundColor="Silver"/>
+
+                <Label Text="Last Name"/>
+                <Entry Text="{Binding LastName}" Placeholder="Last Name" BackgroundColor="Silver"/>
+
+                <Label Text="User Id"/>
+                <Entry Text="{Binding Uid}" Placeholder="User Id" BackgroundColor="Silver"/>
+
+                <Label Text="Email"/>
+                <Entry Text="{Binding Email}" Placeholder="Email" BackgroundColor="Silver"/>
+
+                <Label Text="Roles"/>
+                <Entry Placeholder="Roles" BackgroundColor="Silver"/>
+                
+                <Button Text="Refresh" Command="{Binding FetchUserDataCommand}" HorizontalOptions="End" VerticalOptions="Center"/>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}"/>
         
-        <Label Text="First Name"/>
-        <Entry Text="{Binding FirstName}" Placeholder="First Name" BackgroundColor="Silver"/>
+            </StackLayout>
+        </local:MainPage>
+        <local:AttendancePage Title="Attendance">
+            <!--<StackLayout Padding="40" Spacing="10">-->
 
-        <Label Text="Last Name"/>
-        <Entry Text="{Binding LastName}" Placeholder="Last Name" BackgroundColor="Silver"/>
+                <!--<Label Text="Late (am)"/>
+                <Entry Text="{Binding LateAm}" Placeholder="Late (am)" BackgroundColor="Silver"/>
 
-        <Label Text="User Id"/>
-        <Entry Text="{Binding Uid}" Placeholder="User Id" BackgroundColor="Silver"/>
+                <Label Text="Absent (am)"/>
+                <Entry Text="{Binding AbsentAm}" Placeholder="Absent (am)" BackgroundColor="Silver"/>
 
-        <Label Text="Email"/>
-        <Entry Text="{Binding Email}" Placeholder="Email" BackgroundColor="Silver"/>
+                <Label Text="Absent (pm)"/>
+                <Entry Text="{Binding AbsentPm}" Placeholder="Absent (pm)" BackgroundColor="Silver"/>-->
 
-        <Label Text="Roles"/>
-        <Entry Placeholder="Roles" BackgroundColor="Silver"/>
+                <!--<Button Text="Refresh" Command="{Binding FetchAttendanceDataCommand}" HorizontalOptions="End" VerticalOptions="End"/>
+                    
+                <ActivityIndicator IsRunning="{Binding IsBusy}"/>-->
         
-        <Button Text="Refresh" Command="{Binding FetchUserDataCommand}" HorizontalOptions="End" VerticalOptions="Center"/>
-
-        <ActivityIndicator IsRunning="{Binding IsBusy}"/>
+            <!--</StackLayout>-->
+            <!--<xuni:FlexPie x:Name="pieChart" Binding="Value" BindingName="Name"/>-->
+            
+        </local:AttendancePage>
         
-    </StackLayout>
+    </TabbedPage.Children>
         
-</ContentPage>
+</TabbedPage>

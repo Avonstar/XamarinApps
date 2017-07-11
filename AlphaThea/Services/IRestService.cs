@@ -9,7 +9,8 @@ namespace AlphaThea.Services
     {
         Task<User> GetUserDataAsync();
 
-        Task<List<UserAttendance>> GetUserAttendanceAsync();
+        //Task<List<UserAttendance>> GetUserAttendanceAsync();
+        Task<Attendance> GetUserAttendanceAsync();
 
     }
 }

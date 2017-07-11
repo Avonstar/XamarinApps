@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Text;
@@ -24,7 +25,7 @@ namespace AlphaThea.Services
             _password = Constants.Password;
         }
 
-        public async Task<List<UserAttendance>> GetUserAttendanceAsync()
+        public async Task<Attendance> GetUserAttendanceAsync()
         {
             
 			try
@@ -33,7 +34,17 @@ namespace AlphaThea.Services
 				try
 				{
                     
-					HttpResponseMessage response = _client.GetAsync(Constants.AttendanceUrl).Result;
+
+                    if (!string.IsNullOrWhiteSpace(_token))
+					{
+						_client.DefaultRequestHeaders.Clear();
+						_client.DefaultRequestHeaders.Add("username", _user);
+						_client.DefaultRequestHeaders.Add("password", _password);
+						_client.DefaultRequestHeaders.Add("token", _token);
+
+					}
+
+                    HttpResponseMessage response = _client.GetAsync(Constants.AttendanceUrl).Result;
 
                     var result = await response.Content.ReadAsStringAsync();
 
@@ -41,7 +52,21 @@ namespace AlphaThea.Services
 
                     usrattendances = JsonConvert.DeserializeObject<List<UserAttendance>>(result);
 
-					return usrattendances;
+                    int lateAm = 0;
+                    int absentAm = 0;
+                    int absentPm = 0;
+
+                    lateAm = usrattendances.Where(u => u.lateAm == true).Count();
+                    absentAm = usrattendances.Where(u => u.absentAm == true).Count();
+                    absentPm = usrattendances.Where(u => u.absentPm == true).Count();
+
+                    var att = new Attendance();
+
+                    att.lateAm = lateAm;
+                    att.absentAm = absentAm;
+                    att.absentPm = absentPm;
+
+					return att;
 				}
 				catch (Exception ex)
 				{
@@ -62,12 +87,8 @@ namespace AlphaThea.Services
 
         public async Task<User> GetUserDataAsync()
         {
-			//var client = new HttpClient();
 
 			var uri = new Uri(Constants.TokenUrl);
-            //string user = Constants.Username;
-
-			//string password = Constants.Password;
 
             try
             {
@@ -103,7 +124,6 @@ namespace AlphaThea.Services
                     response = _client.GetAsync(Constants.SpecificUserUrl).Result;
 
                     result = await response.Content.ReadAsStringAsync();
-
 
                     var usr = new User();
                     //Users = new List<User>();

@@ -1,26 +1,29 @@
-﻿using System;
+﻿using Xamarin.Forms;
+using AlphaThea.Models;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Xamarin.Forms;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using AlphaThea.ViewModels;
-
+using Xuni.Forms.FlexPie;
 
 namespace AlphaThea
 {
-    public partial class AlphaTheaPage : ContentPage
+    public partial class AlphaTheaPage : TabbedPage
     {
-
-        //public List<User> Users { get; private set; }
 
         public AlphaTheaPage()
         {
             InitializeComponent();
-            BindingContext = new UserViewModel();
+
+			Xuni.Forms.Core.LicenseManager.Key = License.Key;
+
+			//List<AttendancePieEntity> attendancePie = new List<AttendancePieEntity>();
+
+			//attendancePie.Add(new AttendancePieEntity("Late (am)", 67));
+			//attendancePie.Add(new AttendancePieEntity("Absent (am)", 12));
+			//attendancePie.Add(new AttendancePieEntity("Absent (pm)", 12));
+
+			//pieChart.ItemsSource = attendancePie;
+
+
 
         }
 

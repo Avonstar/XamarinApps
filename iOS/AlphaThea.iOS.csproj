@@ -95,6 +95,36 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Xuni.CollectionView">
+      <HintPath>..\packages\Xuni.CollectionView.2.3.20171.185\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.CollectionView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.iOS.Core">
+      <HintPath>..\packages\Xuni.iOS.Core.2.3.20171.185\lib\Xamarin.iOS10\Xuni.iOS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.Forms.Core">
+      <HintPath>..\packages\Xuni.Forms.Core.2.3.20171.185\lib\Xamarin.iOS10\Xuni.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.Forms.Core.Platform.iOS">
+      <HintPath>..\packages\Xuni.Forms.Core.2.3.20171.185\lib\Xamarin.iOS10\Xuni.Forms.Core.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.iOS.ChartCore">
+      <HintPath>..\packages\Xuni.iOS.ChartCore.2.3.20171.185\lib\Xamarin.iOS10\Xuni.iOS.ChartCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.Forms.ChartCore">
+      <HintPath>..\packages\Xuni.Forms.ChartCore.2.3.20171.185\lib\Xamarin.iOS10\Xuni.Forms.ChartCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.Forms.ChartCore.Platform.iOS">
+      <HintPath>..\packages\Xuni.Forms.ChartCore.2.3.20171.185\lib\Xamarin.iOS10\Xuni.Forms.ChartCore.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.iOS.FlexPie">
+      <HintPath>..\packages\Xuni.iOS.FlexPie.2.3.20171.185\lib\Xamarin.iOS10\Xuni.iOS.FlexPie.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.Forms.FlexPie">
+      <HintPath>..\packages\Xuni.Forms.FlexPie.2.3.20171.185\lib\Xamarin.iOS10\Xuni.Forms.FlexPie.dll</HintPath>
+    </Reference>
+    <Reference Include="Xuni.Forms.FlexPie.Platform.iOS">
+      <HintPath>..\packages\Xuni.Forms.FlexPie.2.3.20171.185\lib\Xamarin.iOS10\Xuni.Forms.FlexPie.Platform.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlphaThea\AlphaThea.csproj">
@@ -120,6 +150,9 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\thameslogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
