@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using AlphaThea.Services;
+using AlphaThea.Models;
 
 
 namespace AlphaThea.ViewModels
@@ -17,7 +19,10 @@ namespace AlphaThea.ViewModels
         {
             userdatamanager = new UserDataManager(new RestService());
 
-            FetchUserDataCommand = new Command(async () => await GetTokenAndSpecificUserData());
+            IsBusy = false;
+
+            FetchUserDataCommand = new Command(async () => await GetTokenAndSpecificUserData(),() => !IsBusy);
+
         }
 
         int _uid;
@@ -27,6 +32,8 @@ namespace AlphaThea.ViewModels
         string _firstName="";
         string _lastName="";
         string[] _roles;
+
+        bool _isbusy;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -40,6 +47,8 @@ namespace AlphaThea.ViewModels
             get;
 
         }
+
+
 
         public int Uid
         {
@@ -118,13 +127,27 @@ namespace AlphaThea.ViewModels
 
 		}
 
+        public bool IsBusy
+        {
+            get { return _isbusy; }
+            set
+            {
+                _isbusy = value;
+                OnPropertyChanged();
+                //FetchUserDataCommand.ChangeCanExecute();
+            }
+
+        }
+
 		public async Task GetTokenAndSpecificUserData()
 		{
 
 			try
 			{
-                
-				var usr = new User();
+
+                IsBusy = true;
+
+                var usr = new User();
 				usr = await userdatamanager.RefreshUserDataAsync();
 
 				Uid = usr.uid;
@@ -134,7 +157,12 @@ namespace AlphaThea.ViewModels
 
 				FirstName = usr.firstName;
 				LastName = usr.lastName;
-				Roles = usr.roles;				
+				Roles = usr.roles;
+
+				var usrattendances = new List<UserAttendance>();
+				usrattendances = await userdatamanager.RefreshUserAttendanceAsync();
+
+                IsBusy = false;
 
 
 			}
@@ -146,6 +174,8 @@ namespace AlphaThea.ViewModels
 
 
 		}
+
+
 
     }
 }

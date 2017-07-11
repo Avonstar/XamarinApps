@@ -1,4 +1,4 @@
-﻿namespace AlphaThea
+﻿namespace AlphaThea.Models
 {
     public class User
 	{

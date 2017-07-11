@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AlphaThea.Models;
 
 namespace AlphaThea.Services
 {
@@ -20,6 +22,12 @@ namespace AlphaThea.Services
 
         }
 
+        public Task<List<UserAttendance>> RefreshUserAttendanceAsync()
+        {
+
+            return restService.GetUserAttendanceAsync();
+
+        }
 
     }
 }

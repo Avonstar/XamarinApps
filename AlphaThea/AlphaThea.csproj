@@ -46,6 +46,7 @@
     <Compile Include="Services\IRestService.cs" />
     <Compile Include="Services\RestService.cs" />
     <Compile Include="Services\UserDataManager.cs" />
+    <Compile Include="Models\UserAttendance.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

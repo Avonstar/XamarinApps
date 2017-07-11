@@ -25,6 +25,8 @@
         
         <Button Text="Refresh" Command="{Binding FetchUserDataCommand}" HorizontalOptions="End" VerticalOptions="Center"/>
 
+        <ActivityIndicator IsRunning="{Binding IsBusy}"/>
+        
     </StackLayout>
         
 </ContentPage>
