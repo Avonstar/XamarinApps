@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xuni="clr-namespace:Xuni.Forms.FlexPie;assembly=Xuni.Forms.FlexPie"
-    x:Class="AlphaThea.AttendancePage">
+    x:Class="AlphaThea.Pages.AttendancePage">
     <StackLayout Padding="40" Spacing="10">
     <Grid x:Name="root" VerticalOptions="FillAndExpand">
 

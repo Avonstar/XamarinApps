@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Xuni.Forms.FlexPie;
 
-namespace AlphaThea
+namespace AlphaThea.Pages
 {
     public partial class AlphaTheaPage : TabbedPage
     {

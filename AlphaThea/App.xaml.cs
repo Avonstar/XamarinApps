@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using System;
 using AlphaThea.Services;
+using AlphaThea.Pages;
 
 namespace AlphaThea
 {

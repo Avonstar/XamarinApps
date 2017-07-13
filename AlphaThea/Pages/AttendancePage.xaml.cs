@@ -6,7 +6,7 @@ using Xuni.Forms.FlexPie;
 
 using Xamarin.Forms;
 
-namespace AlphaThea
+namespace AlphaThea.Pages
 {
     public partial class AttendancePage : ContentPage
     {
