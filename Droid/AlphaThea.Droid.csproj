@@ -66,36 +66,6 @@
     <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
       <HintPath>..\packages\Xamarin.Android.Support.v7.MediaRouter.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
     </Reference>
-    <Reference Include="Xuni.Android.Core">
-      <HintPath>..\packages\Xuni.Android.Core.2.3.20171.185\lib\MonoAndroid10\Xuni.Android.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.Android.ChartCore">
-      <HintPath>..\packages\Xuni.Android.ChartCore.2.3.20171.185\lib\MonoAndroid10\Xuni.Android.ChartCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.Android.FlexPie">
-      <HintPath>..\packages\Xuni.Android.FlexPie.2.3.20171.185\lib\MonoAndroid10\Xuni.Android.FlexPie.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.CollectionView">
-      <HintPath>..\packages\Xuni.CollectionView.2.3.20171.185\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.CollectionView.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.Forms.Core">
-      <HintPath>..\packages\Xuni.Forms.Core.2.3.20171.185\lib\MonoAndroid10\Xuni.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.Forms.Core.Platform.Android">
-      <HintPath>..\packages\Xuni.Forms.Core.2.3.20171.185\lib\MonoAndroid10\Xuni.Forms.Core.Platform.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.Forms.ChartCore">
-      <HintPath>..\packages\Xuni.Forms.ChartCore.2.3.20171.185\lib\MonoAndroid10\Xuni.Forms.ChartCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.Forms.ChartCore.Platform.Android">
-      <HintPath>..\packages\Xuni.Forms.ChartCore.2.3.20171.185\lib\MonoAndroid10\Xuni.Forms.ChartCore.Platform.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.Forms.FlexPie">
-      <HintPath>..\packages\Xuni.Forms.FlexPie.2.3.20171.185\lib\MonoAndroid10\Xuni.Forms.FlexPie.dll</HintPath>
-    </Reference>
-    <Reference Include="Xuni.Forms.FlexPie.Platform.Android">
-      <HintPath>..\packages\Xuni.Forms.FlexPie.2.3.20171.185\lib\MonoAndroid10\Xuni.Forms.FlexPie.Platform.Android.dll</HintPath>
-    </Reference>
     <Reference Include="FormsViewGroup">
       <HintPath>..\packages\Xamarin.Forms.2.3.3.180\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>

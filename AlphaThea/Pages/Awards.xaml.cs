@@ -2,7 +2,6 @@
 using AlphaThea.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using C1.Xamarin.Forms.Grid;
 
 namespace AlphaThea.Pages
 {

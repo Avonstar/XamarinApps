@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using AlphaThea.ViewModels;
-using AlphaThea.Models;
-using Xuni.Forms.FlexPie;
-
+﻿using AlphaThea.ViewModels;
 using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;
-using System.Collections.ObjectModel;
 
 namespace AlphaThea.Pages
 {
