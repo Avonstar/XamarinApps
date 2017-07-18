@@ -12,6 +12,6 @@ namespace AlphaThea.Models
         public string lateAmTime { get; set; }
 		public bool absentAm { get; set; }
         public bool absentPm { get; set; }
-		public string created { get; set; }
+		public DateTime created { get; set; }
     }
 }

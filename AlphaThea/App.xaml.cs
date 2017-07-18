@@ -2,6 +2,7 @@
 using System;
 using AlphaThea.Services;
 using AlphaThea.Pages;
+using C1.Xamarin.Forms;
 
 namespace AlphaThea
 {
@@ -13,6 +14,9 @@ namespace AlphaThea
         public App()
         {
             InitializeComponent();
+
+            C1.Xamarin.Forms.Core.LicenseManager.Key = License.Key;
+
             UsrDataManager = new UserDataManager(new RestService());
             MainPage = new AlphaTheaPage();
         }

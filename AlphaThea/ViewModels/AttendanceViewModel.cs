@@ -26,7 +26,7 @@ namespace AlphaThea.ViewModels
 
 		bool _isbusy;
 
-        IEnumerable<AttendancePieEntity> _attendancePie;
+        IEnumerable<ChartDataModel> _attendancePie;
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -85,7 +85,7 @@ namespace AlphaThea.ViewModels
 
 		}
 
-		public IEnumerable<AttendancePieEntity> AttendancePie
+		public IEnumerable<ChartDataModel> AttendancePie
 		{
 			get { return _attendancePie; }
 			set
@@ -95,45 +95,45 @@ namespace AlphaThea.ViewModels
 			}
 		}
 
-		public async Task<List<AttendancePieEntity>> GetAttendanceListData()
-		{
+		//public async Task<List<ChartDataModel>> GetAttendanceListData()
+		//{
 
-			try
-			{
+		//	try
+		//	{
 
-				IsBusy = true;
+		//		IsBusy = true;
 
-				var att = new Attendance();
-				att = await App.UsrDataManager.RefreshUserAttendanceAsync();
+		//		var att = new Attendance();
+		//		att = await App.UsrDataManager.RefreshUserAttendanceAsync();
 
-				List<AttendancePieEntity> attendancePie = new List<AttendancePieEntity>();
+  //              List<ChartDataModel> attendancePie = new List<ChartDataModel>();
 
-                int total = 180;
+  //              int total = 180;
 
-                int lateAmAsPercent = (int)Math.Round((double)(100 * att.lateAm) / total);
-                int absentAmAsPercent = (int)Math.Round((double)(100 * att.absentAm) / total);
-                int absentPmAsPercent = (int)Math.Round((double)(100 * att.absentPm) / total);
-                int goodDays = 100 - (lateAmAsPercent + absentAmAsPercent + absentPmAsPercent);
+  //              int lateAmAsPercent = (int)Math.Round((double)(100 * att.LateAm) / total);
+  //              int absentAmAsPercent = (int)Math.Round((double)(100 * att.AbsentAm) / total);
+  //              int absentPmAsPercent = (int)Math.Round((double)(100 * att.AbsentPm) / total);
+  //              int goodDays = 100 - (lateAmAsPercent + absentAmAsPercent + absentPmAsPercent);
 
-				attendancePie.Add(new AttendancePieEntity("Late (am)", lateAmAsPercent));
-				attendancePie.Add(new AttendancePieEntity("Absent (am)", absentAmAsPercent));
-				attendancePie.Add(new AttendancePieEntity("Absent (pm)", absentPmAsPercent));
-                attendancePie.Add(new AttendancePieEntity("No lates or absences", goodDays));
+		//		attendancePie.Add(new ChartDataModel("Late (am)", lateAmAsPercent));
+		//		attendancePie.Add(new ChartDataModel("Absent (am)", absentAmAsPercent));
+		//		attendancePie.Add(new ChartDataModel("Absent (pm)", absentPmAsPercent));
+  //              attendancePie.Add(new ChartDataModel("No lates or absences", goodDays));
 
-				IsBusy = false;
+		//		IsBusy = false;
 
-                return attendancePie;
+  //              return attendancePie;
                      
 
-			}
-			catch (Exception ex)
-			{
-				//await DisplayAlert("ERROR", ex.Message, "OK");
-				throw new Exception(ex.Message);
-			}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		//await DisplayAlert("ERROR", ex.Message, "OK");
+		//		throw new Exception(ex.Message);
+		//	}
 
 
-		}
+		//}
 
 		public async Task GetAttendanceData()
 		{
@@ -146,19 +146,19 @@ namespace AlphaThea.ViewModels
 				var att = new Attendance();
                 att = await App.UsrDataManager.RefreshUserAttendanceAsync();
 
-				List<AttendancePieEntity> attendancePie = new List<AttendancePieEntity>();
+                List<ChartDataModel> attendancePie = new List<ChartDataModel>();
 
 				int total = 180;
 
-				int lateAmAsPercent = (int)Math.Round((double)(100 * att.lateAm) / total);
-				int absentAmAsPercent = (int)Math.Round((double)(100 * att.absentAm) / total);
-				int absentPmAsPercent = (int)Math.Round((double)(100 * att.absentPm) / total);
+				int lateAmAsPercent = (int)Math.Round((double)(100 * att.LateAm) / total);
+				int absentAmAsPercent = (int)Math.Round((double)(100 * att.AbsentAm) / total);
+				int absentPmAsPercent = (int)Math.Round((double)(100 * att.AbsentPm) / total);
 				int goodDays = 100 - (lateAmAsPercent + absentAmAsPercent + absentPmAsPercent);
 
-				attendancePie.Add(new AttendancePieEntity("Late (am)", lateAmAsPercent));
-				attendancePie.Add(new AttendancePieEntity("Absent (am)", absentAmAsPercent));
-				attendancePie.Add(new AttendancePieEntity("Absent (pm)", absentPmAsPercent));
-				attendancePie.Add(new AttendancePieEntity("No lates/ absences", goodDays));
+				attendancePie.Add(new ChartDataModel("Late (am)", lateAmAsPercent));
+				attendancePie.Add(new ChartDataModel("Absent (am)", absentAmAsPercent));
+				attendancePie.Add(new ChartDataModel("Absent (pm)", absentPmAsPercent));
+				attendancePie.Add(new ChartDataModel("No lates/ absences", goodDays));
 
                 //AttendancePie = attendancePie;
                 _attendancePie = attendancePie;

@@ -30,10 +30,10 @@ namespace AlphaThea.iOS
 				var customWebView = Element as CustomWebView;
 
                 //Use this in dev - REMEMBER TO REMOVE
-                //string fileName = customWebView.Uri;
+                string fileName = customWebView.Uri;
 
                 //This is probably the deployed path
-				string fileName = Path.Combine(NSBundle.MainBundle.BundlePath, string.Format("Content/{0}", WebUtility.UrlEncode(customWebView.Uri)));
+				//string fileName = Path.Combine(NSBundle.MainBundle.BundlePath, string.Format("Content/{0}", WebUtility.UrlEncode(customWebView.Uri)));
 				
 
                 Control.LoadRequest(new NSUrlRequest(new NSUrl(fileName, false)));

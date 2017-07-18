@@ -7,6 +7,7 @@ using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json;
 using AlphaThea.Models;
+using System.Collections.ObjectModel;
 
 namespace AlphaThea.Services
 {
@@ -62,9 +63,9 @@ namespace AlphaThea.Services
 
                     var att = new Attendance();
 
-                    att.lateAm = lateAm;
-                    att.absentAm = absentAm;
-                    att.absentPm = absentPm;
+                    att.LateAm = lateAm;
+                    att.AbsentAm = absentAm;
+                    att.AbsentPm = absentPm;
 
 					return att;
 				}
@@ -148,6 +149,117 @@ namespace AlphaThea.Services
 	        }
 
         }
+
+   //     public async Task<List<GreenPoints>> GetUserGreenPointsAsync()
+   //     {
+			//try
+			//{
+
+			//	try
+			//	{
+
+
+			//		if (!string.IsNullOrWhiteSpace(_token))
+			//		{
+			//			_client.DefaultRequestHeaders.Clear();
+			//			_client.DefaultRequestHeaders.Add("username", _user);
+			//			_client.DefaultRequestHeaders.Add("password", _password);
+			//			_client.DefaultRequestHeaders.Add("token", _token);
+
+			//		}
+
+			//		HttpResponseMessage response = _client.GetAsync(Constants.GreenPointsUrl).Result;
+
+			//		var result = await response.Content.ReadAsStringAsync();
+
+			//		var usrgreenpoints = new List<UserGreenPoints>();
+
+			//		usrgreenpoints = JsonConvert.DeserializeObject<List<UserGreenPoints>>(result);
+
+   //                 var greenpoints = new List<GreenPoints>();
+
+
+   //                 foreach (var item in usrgreenpoints)
+   //                 {
+   //                     greenpoints.Add(new GreenPoints(){awardedBy=item.approvedBy.username, points=item.points, description=item.description});
+
+   //                 }
+
+
+			//		return greenpoints;
+			//	}
+			//	catch (Exception ex)
+			//	{
+                    
+
+			//		throw new Exception(ex.Message);
+
+			//	}
+
+
+			//}
+			//catch (Exception ex)
+			//{
+			//	//await DisplayAlert("ERROR", ex.Message, "OK");
+			//	throw new Exception(ex.Message);
+			//}
+        //}
+
+		public async Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync()
+		{
+			try
+			{
+
+				try
+				{
+
+
+					if (!string.IsNullOrWhiteSpace(_token))
+					{
+						_client.DefaultRequestHeaders.Clear();
+						_client.DefaultRequestHeaders.Add("username", _user);
+						_client.DefaultRequestHeaders.Add("password", _password);
+						_client.DefaultRequestHeaders.Add("token", _token);
+
+					}
+
+					HttpResponseMessage response = _client.GetAsync(Constants.GreenPointsUrl).Result;
+
+					var result = await response.Content.ReadAsStringAsync();
+
+					var usrgreenpoints = new List<UserGreenPoints>();
+
+					usrgreenpoints = JsonConvert.DeserializeObject<List<UserGreenPoints>>(result);
+
+                    //var greenpoints = new List<GreenPoints>();
+
+                    var greenpoints = new ObservableCollection<GreenPoints>();
+
+					foreach (var item in usrgreenpoints)
+					{
+						greenpoints.Add(new GreenPoints() { created = item.created, awardedBy = item.approvedBy.username, description = item.description, points = item.points });
+
+					}
+
+
+					return greenpoints;
+				}
+				catch (Exception ex)
+				{
+
+
+					throw new Exception(ex.Message);
+
+				}
+
+
+			}
+			catch (Exception ex)
+			{
+				//await DisplayAlert("ERROR", ex.Message, "OK");
+				throw new Exception(ex.Message);
+			}
+		}
 
     }
 }

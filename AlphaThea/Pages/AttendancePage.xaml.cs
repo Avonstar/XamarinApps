@@ -5,6 +5,8 @@ using AlphaThea.Models;
 using Xuni.Forms.FlexPie;
 
 using Xamarin.Forms;
+using Syncfusion.SfChart.XForms;
+using System.Collections.ObjectModel;
 
 namespace AlphaThea.Pages
 {
@@ -17,45 +19,42 @@ namespace AlphaThea.Pages
         {
             InitializeComponent();
 
-            Xuni.Forms.Core.LicenseManager.Key = License.Key;
-
-            BindingContext = viewModel;
-
-			List<AttendancePieEntity> attendancePie = new List<AttendancePieEntity>();
-
-			attendancePie.Add(new AttendancePieEntity("Baseline", 100));
-		
-			pieChart.ItemsSource = attendancePie;
-
+			if (!(Device.OS == TargetPlatform.Android || Device.OS == TargetPlatform.iOS))
+			{
+				Chart.Series[0].AnimationDuration = 2;
+				(Chart.Series[0] as PieSeries).StartAngle = 0;
+				(Chart.Series[0] as PieSeries).EndAngle = 360;
+			}
 
 		}
 
 
-
         protected override async void OnAppearing()
         {
-
-
+            
 			base.OnAppearing();
 
             await viewModel.GetAttendanceData();
 
-            pieChart.BindingContext = viewModel;
+            PieSeries pieSeries = new PieSeries()
+            {
+                ItemsSource = viewModel.AttendancePie,
+                XBindingPath = "Name",
+                YBindingPath = "Value",
+				EnableSmartLabels = true,
+				DataMarkerPosition = CircularSeriesDataMarkerPosition.OutsideExtended,
+				ConnectorLineType = ConnectorLineType.Bezier,
+				StartAngle = 75,
+				EndAngle = 435,
+                DataMarker = new ChartDataMarker()
+                {
+                    LabelContent = LabelContent.Percentage
+                }    
+			};
 
-            pieChart.ItemsSource = viewModel.AttendancePie;
-            pieChart.HeaderText = "School attendance (%)";
-            pieChart.HeaderFontSize = 20;
+            Chart.BindingContext = viewModel;
 
-            pieChart.SelectedItemOffset = 0.2;
-
-			Color[] palette = {
-					Color.FromHex("#B47114"),
-					Color.FromHex("#685444"),
-					Color.FromHex("#ED6200"),
-					Color.FromHex("#CDDC39")};
-
-            pieChart.Palette = palette;
-
+            Chart.Series.Add(pieSeries);
 
         }
 

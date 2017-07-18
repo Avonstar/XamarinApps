@@ -4,9 +4,10 @@ namespace AlphaThea.Models
     public class Attendance
     {
 
-        public int lateAm { get; set; }
-        public int absentAm { get; set; }
-        public int absentPm { get; set; }
+        public int LateAm { get; set; }
+        public int AbsentAm { get; set; }
+        public int AbsentPm { get; set; }
+        public DateTime Created { get; set; }
 
     }
 }

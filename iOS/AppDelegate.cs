@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.SfDataGrid.XForms.iOS;
 using UIKit;
 
 namespace AlphaThea.iOS
@@ -19,9 +20,15 @@ namespace AlphaThea.iOS
             Xuni.Forms.FlexPie.Platform.iOS.Forms.Init();
 
 
+
             LoadApplication(new App());
 
-            return base.FinishedLaunching(app, options);
+            //C1.Xamarin.Forms.Grid.Platform.iOS.FlexGridRenderer.Init();
+            SfDataGridRenderer.Init();
+
+            new Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer();
+
+			return base.FinishedLaunching(app, options);
         }
     }
 }

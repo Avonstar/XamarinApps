@@ -39,6 +39,9 @@
     <EmbeddedResource Include="Pages\PolicyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Awards.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -56,7 +59,6 @@
     <Compile Include="Models\Attendance.cs" />
     <Compile Include="ViewModels\AttendanceViewModel.cs" />
     <Compile Include="License.cs" />
-    <Compile Include="Models\AttendancePieEntity.cs" />
     <Compile Include="CustomControls\CustomWebView.cs" />
     <Compile Include="Pages\AlphaTheaPage.xaml.cs">
       <DependentUpon>AlphaTheaPage.xaml</DependentUpon>
@@ -71,6 +73,16 @@
       <DependentUpon>PolicyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PolicyViewModel.cs" />
+    <Compile Include="Models\GreenPoints.cs" />
+    <Compile Include="ViewModels\AwardsViewModel.cs" />
+    <Compile Include="Models\UserGreenPoints.cs" />
+    <Compile Include="Pages\Awards.xaml.cs">
+      <DependentUpon>Awards.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomStyles\Dark.cs" />
+    <Compile Include="Models\ChartDataModel.cs" />
+    <Compile Include="CustomStyles\Blue.cs" />
+    <Compile Include="CustomStyles\Green.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -86,16 +98,40 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.CollectionView">
-      <HintPath>..\packages\Xuni.CollectionView.2.3.20171.185\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.CollectionView.dll</HintPath>
+      <HintPath>..\packages\Xuni.CollectionView.2.3.20171.189\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.CollectionView.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.Forms.Core">
-      <HintPath>..\packages\Xuni.Forms.Core.2.3.20171.185\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.Forms.Core.dll</HintPath>
+      <HintPath>..\packages\Xuni.Forms.Core.2.3.20171.189\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.Forms.ChartCore">
-      <HintPath>..\packages\Xuni.Forms.ChartCore.2.3.20171.185\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.Forms.ChartCore.dll</HintPath>
+      <HintPath>..\packages\Xuni.Forms.ChartCore.2.3.20171.189\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.Forms.ChartCore.dll</HintPath>
     </Reference>
     <Reference Include="Xuni.Forms.FlexPie">
-      <HintPath>..\packages\Xuni.Forms.FlexPie.2.3.20171.185\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.Forms.FlexPie.dll</HintPath>
+      <HintPath>..\packages\Xuni.Forms.FlexPie.2.3.20171.189\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xuni.Forms.FlexPie.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.CollectionView">
+      <HintPath>..\packages\C1.CollectionView.2.3.20172.170\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\C1.CollectionView.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Xamarin.Forms.Core">
+      <HintPath>..\packages\C1.Xamarin.Forms.Core.2.3.20172.170\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\C1.Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Xamarin.Forms.Grid">
+      <HintPath>..\packages\C1.Xamarin.Forms.Grid.2.3.20172.170\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\C1.Xamarin.Forms.Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Data.Portable">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.Data.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.Portable">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfDataGrid.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.15.2.0.46\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +146,7 @@
     <Folder Include="CustomControls\" />
     <Folder Include="Pages\" />
     <Folder Include="Content\" />
+    <Folder Include="CustomStyles\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

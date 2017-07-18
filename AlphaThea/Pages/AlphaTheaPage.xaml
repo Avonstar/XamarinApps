@@ -32,6 +32,11 @@
         
             </StackLayout>
         </local:MainPage>
+        <local:Awards Title="Awards">
+
+
+
+        </local:Awards>
         <local:AttendancePage Title="Attendance">
             <!--<StackLayout Padding="40" Spacing="10">-->
 

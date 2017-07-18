@@ -13,7 +13,7 @@ namespace AlphaThea.Pages
         {
             InitializeComponent();
 
-			Xuni.Forms.Core.LicenseManager.Key = License.Key;
+			//Xuni.Forms.Core.LicenseManager.Key = License.Key;
 
 			//List<AttendancePieEntity> attendancePie = new List<AttendancePieEntity>();
 

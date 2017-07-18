@@ -2,14 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xuni="clr-namespace:Xuni.Forms.FlexPie;assembly=Xuni.Forms.FlexPie"
+    xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    xmlns:local="clr-namespace:AlphaThea.Pages;assembly=AlphaThea"
     x:Class="AlphaThea.Pages.AttendancePage">
+    
     <StackLayout Padding="40" Spacing="10">
-    <Grid x:Name="root" VerticalOptions="FillAndExpand">
+        
+        <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-      <!--<xuni:FlexPie InnerRadius ="0.3" BindingName = "Name" Binding = "Value" x:Name = "flexPie" />-->
-        <!--<xuni:FlexPie InnerRadius ="0.3" ItemsSource = "{Binding AttendancePie}" BindingName = "Name" Binding = "Value" x:Name = "pieChart" />-->
-        <xuni:FlexPie InnerRadius ="0.3" IsAnimated = "false" BindingName = "Name" Binding = "Value" x:Name = "pieChart" />
-   </Grid>
+            <chart:SfChart.Title>
+                <chart:ChartTitle Text="Attendance last 180 days (%)"/>
+            </chart:SfChart.Title>
+
+            <chart:SfChart.Legend>
+                <chart:ChartLegend/>
+            </chart:SfChart.Legend>
+
+        </chart:SfChart>
+        
   </StackLayout>
    
 <!--<Button Text = "Refresh" Command = "{Binding FetchAttendanceDataCommand}" HorizontalOptions = "Center" VerticalOptions = "Center"/>-->

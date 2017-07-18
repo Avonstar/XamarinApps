@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using AlphaThea.Models;
 
@@ -28,6 +29,14 @@ namespace AlphaThea.Services
             return restService.GetUserAttendanceAsync();
 
         }
+
+		public Task<ObservableCollection<GreenPoints>> RefreshUserGreenPointsAsync()
+		{
+
+			return restService.GetUserGreenPointsAsync();
+
+		}
+
 
     }
 }
