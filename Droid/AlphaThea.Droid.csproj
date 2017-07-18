@@ -141,6 +141,18 @@
     <Reference Include="Syncfusion.SfChart.XForms">
       <HintPath>..\packages\Syncfusion.Xamarin.SfChart.15.2.0.46\lib\MonoAndroid10\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Compression.Portable">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\MonoAndroid10\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Portable">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\MonoAndroid10\Syncfusion.Pdf.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPdfViewer.XForms.Android">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\MonoAndroid10\Syncfusion.SfPdfViewer.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPdfViewer.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\MonoAndroid10\Syncfusion.SfPdfViewer.XForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlphaThea\AlphaThea.csproj">

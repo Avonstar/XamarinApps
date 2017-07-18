@@ -176,6 +176,18 @@
     <Reference Include="Syncfusion.SfChart.XForms.iOS">
       <HintPath>..\packages\Syncfusion.Xamarin.SfChart.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Compression.Portable">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Portable">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.Pdf.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPdfViewer.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfPdfViewer.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPdfViewer.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfPdfViewer.XForms.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlphaThea\AlphaThea.csproj">
@@ -205,6 +217,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\thameslogo.png" />
+    <BundleResource Include="Resources\FileIcon.png" />
+    <BundleResource Include="Resources\PageDown.png" />
+    <BundleResource Include="Resources\PageUp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

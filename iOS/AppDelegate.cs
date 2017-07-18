@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Syncfusion.SfDataGrid.XForms.iOS;
+using Syncfusion.SfPdfViewer.XForms.iOS;
 using UIKit;
 
 namespace AlphaThea.iOS
@@ -27,6 +28,7 @@ namespace AlphaThea.iOS
             SfDataGridRenderer.Init();
 
             new Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer();
+            new SfPdfDocumentViewRenderer();
 
 			return base.FinishedLaunching(app, options);
         }

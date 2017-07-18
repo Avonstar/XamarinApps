@@ -22,9 +22,6 @@
 
                 <Label Text="Email"/>
                 <Entry Text="{Binding Email}" Placeholder="Email" BackgroundColor="Silver"/>
-
-                <Label Text="Roles"/>
-                <Entry Placeholder="Roles" BackgroundColor="Silver"/>
                 
                 <Button Text="Refresh" Command="{Binding FetchUserDataCommand}" HorizontalOptions="End" VerticalOptions="Center"/>
 
