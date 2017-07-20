@@ -67,7 +67,7 @@ namespace AlphaThea.Pages
 			this.picker.Items.Add("HarassmentandBullyingPolicy");
 			this.picker.SelectedIndexChanged += Picker_SelectedIndexChanged;
 
-			if (Device.OS != TargetPlatform.Windows)
+			if (Device.RuntimePlatform != Device.Windows)
 			{
 				popupLayout.WidthRequest = 0;
 				popupLayout.HeightRequest = 0;
@@ -112,7 +112,7 @@ namespace AlphaThea.Pages
 
 		private void pageNumberEntry_Focused(object sender, FocusEventArgs e)
 		{
-			if (Device.OS == TargetPlatform.Windows)
+			if (Device.RuntimePlatform == Device.Windows)
 			{
 				popupLayout.IsVisible = false;
 			}
@@ -120,7 +120,7 @@ namespace AlphaThea.Pages
 
 		private void gesture_Tapped(object sender, EventArgs e)
 		{
-			if (Device.OS == TargetPlatform.Windows)
+			if (Device.RuntimePlatform == Device.Windows)
 			{
 				popupLayout.IsVisible = false;
 			}
@@ -166,7 +166,7 @@ namespace AlphaThea.Pages
 
 		private void ShowFileBtn_Clicked(object sender, EventArgs e)
 		{
-			if (Device.OS != TargetPlatform.Windows)
+			if (Device.RuntimePlatform != Device.Windows)
 			{
 				if (!popupLayout.IsVisible)
 				{
@@ -206,7 +206,7 @@ namespace AlphaThea.Pages
 
 		private void TextField_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			if (Device.OS != TargetPlatform.Windows)
+			if (Device.RuntimePlatform != Device.Windows)
 			{
 				if (textSearchEntry.Text != "")
 				{
@@ -238,7 +238,7 @@ namespace AlphaThea.Pages
 		{
 			if (args.NoMatchFound)
 			{
-				if (Device.OS != TargetPlatform.iOS)
+				if (Device.RuntimePlatform != Device.iOS)
 					page.DisplayAlert("Message", "No match found", "OK");
 				else
 					DependencyService.Get<IAlertView>().Show("Message", "No match found");
@@ -247,7 +247,7 @@ namespace AlphaThea.Pages
 
 		private void OnSearchIconClicked(object sender, EventArgs e)
 		{
-			if (Device.OS == TargetPlatform.Windows)
+			if (Device.RuntimePlatform == Device.Windows)
 			{
 				popupLayout.IsVisible = false;
 			}
@@ -270,7 +270,7 @@ namespace AlphaThea.Pages
 
 		private void PdfViewerControl_PageChanged(object sender, PageChangedEventArgs e)
 		{
-			if (Device.OS == TargetPlatform.Windows)
+			if (Device.RuntimePlatform == Device.Windows)
 			{
 				popupLayout.IsVisible = false;
 			}
@@ -279,7 +279,7 @@ namespace AlphaThea.Pages
 
 		private void PdfViewerControl_DocumentLoaded(object sender, EventArgs e)
 		{
-			if (Device.OS == TargetPlatform.Windows)
+			if (Device.RuntimePlatform == Device.Windows)
 			{
 				popupLayout.IsVisible = false;
 			}
@@ -289,7 +289,7 @@ namespace AlphaThea.Pages
 
 		private void goToPreviousButton_Clicked(object sender, EventArgs e)
 		{
-			if (Device.OS == TargetPlatform.Windows)
+			if (Device.RuntimePlatform == Device.Windows)
 			{
 				popupLayout.IsVisible = false;
 			}
@@ -299,7 +299,7 @@ namespace AlphaThea.Pages
 
 		private void goToNextButton_Clicked(object sender, EventArgs e)
 		{
-			if (Device.OS == TargetPlatform.Windows)
+			if (Device.RuntimePlatform == Device.Windows)
 			{
 				popupLayout.IsVisible = false;
 			}
@@ -309,7 +309,7 @@ namespace AlphaThea.Pages
 
 		private void pageNumberEntry_Completed(object sender, EventArgs e)
 		{
-			if (Device.OS == TargetPlatform.Windows)
+			if (Device.RuntimePlatform == Device.Windows)
 			{
 				popupLayout.IsVisible = false;
 			}
@@ -320,7 +320,7 @@ namespace AlphaThea.Pages
 					pdfViewerControl.GoToPage(int.Parse((sender as Entry).Text));
 				else
 				{
-					if (Device.OS != TargetPlatform.iOS)
+					if (Device.RuntimePlatform != Device.iOS)
 						page.DisplayAlert("Error", "Please enter the valid page number.", "OK");
 					else
 						DependencyService.Get<IAlertView>().Show("Error", "Please enter the valid page number.");
@@ -329,7 +329,7 @@ namespace AlphaThea.Pages
 			}
 			else
 			{
-				if (Device.OS != TargetPlatform.iOS)
+				if (Device.RuntimePlatform != Device.iOS)
 					page.DisplayAlert("Error", "Please enter the valid page number.", "OK");
 				else
 					DependencyService.Get<IAlertView>().Show("Error", "Please enter the valid page number.");

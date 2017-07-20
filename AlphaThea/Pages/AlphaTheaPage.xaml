@@ -6,7 +6,7 @@
 
     <TabbedPage.Children>
 
-        <local:MainPage Title="Main">
+        <local:MainPage Title="Home" Icon="home.png">
            <StackLayout Padding="40" Spacing="10">
                 <Image Source="thameslogo.png" />
                 <!--<Label Text="Thames Christian College School" TextColor="Blue" VerticalOptions="Center" HorizontalOptions="Center" />-->
@@ -29,12 +29,10 @@
         
             </StackLayout>
         </local:MainPage>
-        <local:Awards Title="Awards">
-
-
+        <local:Awards Title="Awards" Icon="heart.png">
 
         </local:Awards>
-        <local:AttendancePage Title="Attendance">
+        <local:AttendancePage Title="Attendance" Icon="time.png">
             <!--<StackLayout Padding="40" Spacing="10">-->
 
                 <!--<Label Text="Late (am)"/>
@@ -55,7 +53,7 @@
             
         </local:AttendancePage>
 
-        <local:PolicyPage Title="School Policies"></local:PolicyPage>
+        <local:PolicyPage Title="School Policies" Icon="book.png"></local:PolicyPage>
         
     </TabbedPage.Children>
         

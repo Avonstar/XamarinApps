@@ -23,7 +23,7 @@ namespace AlphaThea.CustomStyles
         //I added
 		public override Color GetRecordBackgroundColor()
 		{
-			return Color.FromRgb(123, 149, 52);
+			return Color.FromRgb(244, 249, 229);
 		}
 
 		public override Color GetSelectionForegroundColor()

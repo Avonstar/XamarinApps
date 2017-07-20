@@ -237,7 +237,7 @@ namespace AlphaThea.Services
 
 					foreach (var item in usrgreenpoints)
 					{
-						greenpoints.Add(new GreenPoints() { created = item.created, awardedBy = item.approvedBy.username, description = item.description, points = item.points });
+						greenpoints.Add(new GreenPoints() { Created = item.created, AwardedBy = item.approvedBy.username, Description = item.description, Points = item.points });
 
 					}
 

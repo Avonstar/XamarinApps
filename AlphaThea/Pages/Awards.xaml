@@ -18,8 +18,10 @@
         
         <StackLayout VerticalOptions="FillAndExpand" Padding="40">
             <syncfusion:SfDataGrid x:Name="dataGrid"
+                AllowResizingColumn="true"
+                AutoGenerateColumns="false"
                 ColumnSizer="Star"
-                GridStyle="{StaticResource blue}"
+                GridStyle="{StaticResource green}"
                 VerticalOptions="FillAndExpand">
 
                 <syncfusion:SfDataGrid.HeaderRowHeight>
@@ -36,7 +38,7 @@
                                        HeaderTextAlignment="Start"
                                        LineBreakMode="WordWrap"
                                        LoadUIView="False"
-                                       MappingName="created"
+                                       MappingName="Created"
                                        Format="dd/MM/yyyy"
                                         Padding="5, 0, 0, 0"
                                        TextAlignment="Start">
@@ -67,7 +69,7 @@
                                        HeaderTextAlignment="Start"
                                        LineBreakMode="WordWrap"
                                        LoadUIView="False"
-                                       MappingName="awardedBy"
+                                       MappingName="AwardedBy"
                                        Padding="5, 0, 0, 0"
                                        TextAlignment="Start">
 
@@ -96,7 +98,7 @@
                                        HeaderText="Reason"
                                        HeaderTextAlignment="Start"
                                        LineBreakMode="WordWrap"
-                                       MappingName="description"
+                                       MappingName="Description"
                                        Padding="5,0,5,0"
                                        TextAlignment="Start">
                     <syncfusion:GridTextColumn.HeaderCellTextSize>
@@ -120,33 +122,32 @@
                     </syncfusion:GridTextColumn.CellTextSize>
                 </syncfusion:GridTextColumn>
 
-                <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
+                <syncfusion:GridImageColumn HeaderFontAttribute="Bold"
                                        HeaderText="Points"
                                        HeaderTextAlignment="Start"
-                                       LineBreakMode="WordWrap"
-                                       MappingName="points"
-                                       Padding="5,0,5,0"
-                                       TextAlignment="Start">
-                    <syncfusion:GridTextColumn.HeaderCellTextSize>
+                                       LineBreakMode="TailTruncation"
+                                       MappingName="GreenPointsImage"
+                                       Padding="5,0,5,0">
+                    <syncfusion:GridImageColumn.HeaderCellTextSize>
                         <OnPlatform x:TypeArguments="x:Double"
                                     Android="14"
                                     WinPhone="12"
                                     iOS="12" />
-                    </syncfusion:GridTextColumn.HeaderCellTextSize>
+                    </syncfusion:GridImageColumn.HeaderCellTextSize>
 
-                    <syncfusion:GridTextColumn.MaximumWidth>
+                    <syncfusion:GridImageColumn.MaximumWidth>
                         <OnIdiom x:TypeArguments="x:Double"
                                  Phone="150"
                                  Tablet="300" />
-                    </syncfusion:GridTextColumn.MaximumWidth>
+                    </syncfusion:GridImageColumn.MaximumWidth>
 
-                    <syncfusion:GridTextColumn.CellTextSize>
+                    <syncfusion:GridImageColumn.CellTextSize>
                         <OnPlatform x:TypeArguments="x:Double"
                                     Android="14"
                                     WinPhone="12"
                                     iOS="12" />
-                    </syncfusion:GridTextColumn.CellTextSize>
-                </syncfusion:GridTextColumn>
+                    </syncfusion:GridImageColumn.CellTextSize>
+                </syncfusion:GridImageColumn>
 
             </syncfusion:SfDataGrid.Columns>
 

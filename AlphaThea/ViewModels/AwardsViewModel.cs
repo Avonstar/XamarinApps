@@ -7,33 +7,15 @@ using System.Threading.Tasks;
 using AlphaThea.Services;
 using AlphaThea.Models;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace AlphaThea.ViewModels
 {
     public class AwardsViewModel
     {
 
-        //public int id { get; set; }
-        //public User awardedTo { get; set; }
-        //public User approvedBy { get; set; }
-        //public int points { get; set; }
-        //public int type { get; set; }
-        //public int created { get; set; }
-        //public string description { get; set; }
-        //public int entityId { get; set; }
-        //public string entityType { get; set; }
-        //public string operation { get; set; }
-        //public int reasonType { get; set; }
-
-        int _transactionId;
-        int _points;
-        string _description;
-
-        int _lateAm;
-		int _absentAm;
-		int _absentPm;
-
-		bool _isbusy;
+		private bool _isbusy;
+        private ImageSource _greenPointImg;
 
         public AwardsViewModel()
         {
@@ -64,16 +46,80 @@ namespace AlphaThea.ViewModels
 
 		}
 
+		public ImageSource GreenPointImage
+		{
+			get { return _greenPointImg; }
+			set
+			{
+				this._greenPointImg = value;
+			}
+		}
 
-        public async Task<ObservableCollection<GreenPoints>> GetGreenPointsListData()
+		public async Task<ObservableCollection<GreenPointsFinal>> GetGreenPointsListData()
+		{
+
+			var greenPoints = new ObservableCollection<GreenPoints>();
+			greenPoints = await App.UsrDataManager.RefreshUserGreenPointsAsync();
+
+            var greenPointsFinal = new ObservableCollection<GreenPointsFinal>();
+
+            foreach(var gpItem in greenPoints)
+            {
+
+                greenPointsFinal.Add(new GreenPointsFinal()
+                {
+                    Created = gpItem.Created,
+                    AwardedBy = gpItem.AwardedBy,
+                    Description = gpItem.Description,
+                    GreenPointsImage = GetGreenPointImage(gpItem.Points)
+                });
+            }
+
+
+            return greenPointsFinal;
+
+		}
+
+        private ImageSource GetGreenPointImage(int greenPoints)
         {
 
-            var greenPoints = new ObservableCollection<GreenPoints>();
-            greenPoints = await App.UsrDataManager.RefreshUserGreenPointsAsync();
+            ImageSource imgSource;
 
-            return greenPoints;
-            
-        }
+            switch (greenPoints)
+			{
+
+				case 1:
+
+					imgSource = ImageSource.FromResource("AlphaThea.Content.Images.1GreenStar.png");
+                    break;
+
+				case 2:
+                    imgSource = ImageSource.FromResource("AlphaThea.Content.Images.2GreenStars.png");
+                    break;
+
+				case 3:
+					imgSource = ImageSource.FromResource("AlphaThea.Content.Images.3GreenStars.png");
+                    break;
+
+				case 4:
+					imgSource = ImageSource.FromResource("AlphaThea.Content.Images.4GreenStars.png");
+                    break;
+
+				case 5:
+					imgSource = ImageSource.FromResource("AlphaThea.Content.Images.5GreenStars.png");
+                    break;
+
+				default:
+                    imgSource = null;
+					break;
+
+			}
+
+            return imgSource;
+
+
+		}
+
 
 
     }
