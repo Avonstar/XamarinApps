@@ -12,6 +12,8 @@
 
         public static string UsersUrl = "http://api.s17039536.onlinehome-server.info/web/api/user";
 
+        public static string AllUsersUrl = "http://api.s17039536.onlinehome-server.info/web/api/user/?limit=400&page=1&sort=u.uid&direction=asc";
+
         //public static string SpecificUserUrl = "http://api.s17039536.onlinehome-server.info/web/api/user/357";
 
         public static string SpecificUserUrl = "http://api.s17039536.onlinehome-server.info/web/api/user/1747";

@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using AlphaThea.ViewModels;
 
 using Xamarin.Forms;
 
 namespace AlphaThea.Pages
 {
-    public partial class MainPage : ContentPage
+    public partial class HomePage : ContentPage
     {
-        public MainPage()
+        public HomePage()
         {
             InitializeComponent();
-            BindingContext = new UserViewModel();
         }
     }
 }

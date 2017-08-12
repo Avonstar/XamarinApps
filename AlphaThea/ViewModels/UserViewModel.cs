@@ -172,7 +172,39 @@ namespace AlphaThea.ViewModels
 
 		}
 
+		public async Task GetTokenAndAllsUsers()
+		{
 
+			try
+			{
+
+				IsBusy = true;
+
+				var usr = new User();
+				//usr = await userdatamanager.RefreshUserDataAsync();
+				usr = await App.UsrDataManager.RefreshUserDataAsync();
+
+				Uid = usr.uid;
+				Username = usr.username;
+				Email = usr.email;
+				Status = usr.status;
+
+				FirstName = usr.firstName;
+				LastName = usr.lastName;
+				Roles = usr.roles;
+
+				IsBusy = false;
+
+
+			}
+			catch (Exception ex)
+			{
+				//await DisplayAlert("ERROR", ex.Message, "OK");
+				throw new Exception(ex.Message);
+			}
+
+
+		}
 
     }
 }

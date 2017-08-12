@@ -33,7 +33,7 @@
     <EmbeddedResource Include="Pages\AttendancePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\MainPage.xaml">
+    <EmbeddedResource Include="Pages\StudentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\PolicyPage.xaml">
@@ -45,11 +45,14 @@
     <EmbeddedResource Include="Content\Anti-BullyingPolicy.pdf" />
     <EmbeddedResource Include="Content\FirstAidPolicy.pdf" />
     <EmbeddedResource Include="Content\HarassmentandBullyingPolicy.pdf" />
+    <EmbeddedResource Include="Content\Images\1GreenStar.png" />
+    <EmbeddedResource Include="Content\Images\2GreenStars.png" />
+    <EmbeddedResource Include="Content\Images\3GreenStars.png" />
     <EmbeddedResource Include="Content\Images\4GreenStars.png" />
     <EmbeddedResource Include="Content\Images\5GreenStars.png" />
-    <EmbeddedResource Include="Content\Images\3GreenStars.png" />
-    <EmbeddedResource Include="Content\Images\2GreenStars.png" />
-    <EmbeddedResource Include="Content\Images\1GreenStar.png" />
+    <EmbeddedResource Include="Pages\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -73,8 +76,8 @@
     <Compile Include="Pages\AttendancePage.xaml.cs">
       <DependentUpon>AttendancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Pages\StudentPage.xaml.cs">
+      <DependentUpon>StudentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PolicyPage.xaml.cs">
       <DependentUpon>PolicyPage.xaml</DependentUpon>
@@ -93,6 +96,9 @@
     <Compile Include="IAlertView.cs" />
     <Compile Include="Helper\CustomEntry.cs" />
     <Compile Include="Models\GreenPointsFinal.cs" />
+    <Compile Include="Pages\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -130,6 +136,9 @@
     </Reference>
     <Reference Include="Syncfusion.SfPdfViewer.XForms">
       <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfPdfViewer.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

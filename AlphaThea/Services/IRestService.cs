@@ -8,6 +8,9 @@ namespace AlphaThea.Services
 {
     public interface IRestService
     {
+
+        Task<ObservableCollection<User>> GetAllUsersAsync();
+
         Task<User> GetUserDataAsync();
 
         //Task<List<UserAttendance>> GetUserAttendanceAsync();

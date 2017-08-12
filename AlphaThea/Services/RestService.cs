@@ -26,6 +26,82 @@ namespace AlphaThea.Services
             _password = Constants.Password;
         }
 
+        public async Task<ObservableCollection<User>> GetAllUsersAsync()
+        {
+			var uri = new Uri(Constants.TokenUrl);
+
+			try
+			{
+
+				string jsonString = @"{""username"" : ""myusername"", ""password"" : ""mypassword""}";
+
+				jsonString = jsonString.Replace("myusername", _user);
+				var jsonData = jsonString.Replace("mypassword", _password);
+
+				var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage response = await _client.PostAsync(uri, content);
+
+				// this result string should be something like: "{"token":"rgh2ghgdsfds"}"
+				var result = await response.Content.ReadAsStringAsync();
+
+				Token token = JsonConvert.DeserializeObject<Token>(result);
+				//var tok = token.token;
+				_token = token.token;
+
+				try
+				{
+
+					if (!string.IsNullOrWhiteSpace(_token))
+					{
+						_client.DefaultRequestHeaders.Clear();
+						_client.DefaultRequestHeaders.Add("username", _user);
+						_client.DefaultRequestHeaders.Add("password", _password);
+						_client.DefaultRequestHeaders.Add("token", _token);
+
+					}
+
+					response = _client.GetAsync(Constants.AllUsersUrl).Result;
+
+					result = await response.Content.ReadAsStringAsync();
+
+					//var usr = new User();
+					var usrs = new List<User>();
+
+					usrs = JsonConvert.DeserializeObject<List<User>>(result);
+
+					var users = new ObservableCollection<User>();
+
+                    //lateAm = usrattendances.Where(u => u.lateAm == true).Count();
+
+                    var uu = usrs.Where(u => u.roles.Contains("ROLE_PUPIL"));
+
+
+					//foreach (var item in usrs)
+					//{
+					//	greenpoints.Add(new GreenPoints() { Created = item.created, AwardedBy = item.approvedBy.username, Description = item.description, Points = item.points });
+
+					//}
+
+					return users;
+				}
+				catch (Exception ex)
+				{
+
+					throw new Exception(ex.Message);
+
+				}
+
+
+			}
+			catch (Exception ex)
+			{
+				//await DisplayAlert("ERROR", ex.Message, "OK");
+				throw new Exception(ex.Message);
+			}
+
+		}
+
         public async Task<Attendance> GetUserAttendanceAsync()
         {
             

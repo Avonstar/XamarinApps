@@ -8,10 +8,26 @@ namespace AlphaThea.Pages
     {
 
         AttendanceViewModel viewModel = new AttendanceViewModel();
+        PieSeries pieSeries;
 
         public AttendancePage()
         {
             InitializeComponent();
+
+			    pieSeries = new PieSeries()
+			         {
+			             XBindingPath = "Name",
+			             YBindingPath = "Value",
+			             EnableSmartLabels = true,
+			             DataMarkerPosition = CircularSeriesDataMarkerPosition.OutsideExtended,
+			             ConnectorLineType = ConnectorLineType.Bezier,
+						 StartAngle = 75,
+						 EndAngle = 435,
+			             DataMarker = new ChartDataMarker()
+			             {
+			                 LabelContent = LabelContent.Percentage
+			             }    
+			          };
 
 			if (!(Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS))
 
@@ -31,21 +47,7 @@ namespace AlphaThea.Pages
 
             await viewModel.GetAttendanceData();
 
-			         PieSeries pieSeries = new PieSeries()
-			         {
-			             ItemsSource = viewModel.AttendancePie,
-			             XBindingPath = "Name",
-			             YBindingPath = "Value",
-				EnableSmartLabels = true,
-				DataMarkerPosition = CircularSeriesDataMarkerPosition.OutsideExtended,
-				ConnectorLineType = ConnectorLineType.Bezier,
-				StartAngle = 75,
-				EndAngle = 435,
-			             DataMarker = new ChartDataMarker()
-			             {
-			                 LabelContent = LabelContent.Percentage
-			             }    
-			};
+            pieSeries.ItemsSource = viewModel.AttendancePie;
 
             Chart.BindingContext = viewModel;
 

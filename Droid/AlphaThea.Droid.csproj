@@ -123,6 +123,15 @@
     <Reference Include="Syncfusion.SfPdfViewer.XForms">
       <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\MonoAndroid10\Syncfusion.SfPdfViewer.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.Android">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\MonoAndroid10\Syncfusion.SfAutoComplete.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms.Android">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\MonoAndroid10\Syncfusion.SfAutoComplete.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\MonoAndroid10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlphaThea\AlphaThea.csproj">

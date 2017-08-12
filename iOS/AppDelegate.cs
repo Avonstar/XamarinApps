@@ -12,14 +12,16 @@ namespace AlphaThea.iOS
         
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
 
-            LoadApplication(new App());
+			new Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer();
+			new Syncfusion.SfAutoComplete.XForms.iOS.SfAutoCompleteRenderer();
+			new SfPdfDocumentViewRenderer();
+
+            global::Xamarin.Forms.Forms.Init();
 
             SfDataGridRenderer.Init();
 
-            new Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer();
-            new SfPdfDocumentViewRenderer();
+            LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);
         }

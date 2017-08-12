@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace AlphaThea.ViewModels
 {
-    public class AwardsViewModel
+    public class AwardsViewModel : INotifyPropertyChanged
     {
 
 		private bool _isbusy;

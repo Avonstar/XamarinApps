@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>AlphaThea</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.thames.alphathea</string>
+	<string>org.thames.AlphaThea</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

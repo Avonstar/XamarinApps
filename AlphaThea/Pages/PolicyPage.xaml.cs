@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 
 using Xamarin.Forms;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace AlphaThea.Pages
 {
 	public partial class PolicyPage : ContentPage

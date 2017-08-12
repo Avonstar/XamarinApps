@@ -6,54 +6,25 @@
 
     <TabbedPage.Children>
 
-        <local:MainPage Title="Home" Icon="home.png">
-           <StackLayout Padding="40" Spacing="10">
-                <Image Source="thameslogo.png" />
-                <!--<Label Text="Thames Christian College School" TextColor="Blue" VerticalOptions="Center" HorizontalOptions="Center" />-->
-                
-                <Label Text="First Name"/>
-                <Entry Text="{Binding FirstName}" Placeholder="First Name" BackgroundColor="Silver"/>
+        <local:HomePage Title="Home" Icon="home.png">
 
-                <Label Text="Last Name"/>
-                <Entry Text="{Binding LastName}" Placeholder="Last Name" BackgroundColor="Silver"/>
-
-                <Label Text="User Id"/>
-                <Entry Text="{Binding Uid}" Placeholder="User Id" BackgroundColor="Silver"/>
-
-                <Label Text="Email"/>
-                <Entry Text="{Binding Email}" Placeholder="Email" BackgroundColor="Silver"/>
-                
-                <Button Text="Refresh" Command="{Binding FetchUserDataCommand}" HorizontalOptions="End" VerticalOptions="Center"/>
-
-                <ActivityIndicator IsRunning="{Binding IsBusy}"/>
+        </local:HomePage>
         
-            </StackLayout>
-        </local:MainPage>
-        <local:Awards Title="Awards" Icon="heart.png">
+        <local:StudentPage Title="Student" Icon="student.png">
+           
+        </local:StudentPage>
+        
+        <local:Awards Title="Awards" Icon="award.png">
 
         </local:Awards>
-        <local:AttendancePage Title="Attendance" Icon="time.png">
-            <!--<StackLayout Padding="40" Spacing="10">-->
-
-                <!--<Label Text="Late (am)"/>
-                <Entry Text="{Binding LateAm}" Placeholder="Late (am)" BackgroundColor="Silver"/>
-
-                <Label Text="Absent (am)"/>
-                <Entry Text="{Binding AbsentAm}" Placeholder="Absent (am)" BackgroundColor="Silver"/>
-
-                <Label Text="Absent (pm)"/>
-                <Entry Text="{Binding AbsentPm}" Placeholder="Absent (pm)" BackgroundColor="Silver"/>-->
-
-                <!--<Button Text="Refresh" Command="{Binding FetchAttendanceDataCommand}" HorizontalOptions="End" VerticalOptions="End"/>
-                    
-                <ActivityIndicator IsRunning="{Binding IsBusy}"/>-->
         
-            <!--</StackLayout>-->
-            <!--<xuni:FlexPie x:Name="pieChart" Binding="Value" BindingName="Name"/>-->
-            
+        <local:AttendancePage Title="Attendance" Icon="time.png">
+
         </local:AttendancePage>
 
-        <local:PolicyPage Title="School Policies" Icon="book.png"></local:PolicyPage>
+        <local:PolicyPage Title="School Policies" Icon="book.png">
+
+        </local:PolicyPage>
         
     </TabbedPage.Children>
         

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+    x:Class="AlphaThea.Pages.StudentPage">
+
+    <ContentPage.Content>
+      <Grid x:Name="sampleLayout" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="Student Search" Grid.Row="0" FontSize="20"  FontAttributes="Bold"  HorizontalOptions="Start" VerticalOptions="Center"/>
+            <StackLayout Orientation="Vertical" Grid.Row="1" >
+                <Image Source="thameslogo.png" />
+                <Label Text="Student" HeightRequest="30" FontSize="16"   HorizontalOptions="Start"/>
+                <autocomplete:SfAutoComplete Watermark="Enter Student Name" x:Name="studentAutoComplete" SuggestionMode="StartsWith" AutoCompleteMode="Suggest" HeightRequest="40" MinimumPrefixCharacters="1" MaximumDropDownHeight="150" />
+            </StackLayout>
+            <StackLayout x:Name="buttonaStack" Grid.Row="2">
+                
+                <Button Text="Search" x:Name="searchButton" BackgroundColor="Silver"/>
+           
+                <Label Text="First Name"/>
+                <Entry Text="{Binding FirstName}" Placeholder="First Name" BackgroundColor="Silver"/>
+
+                <Label Text="Last Name"/>
+                <Entry Text="{Binding LastName}" Placeholder="Last Name" BackgroundColor="Silver"/>
+
+                <Label Text="User Id"/>
+                <Entry Text="{Binding Uid}" Placeholder="User Id" BackgroundColor="Silver"/>
+
+                <Label Text="Email"/>
+                <Entry Text="{Binding Email}" Placeholder="Email" BackgroundColor="Silver"/>
+                
+            </StackLayout>
+      </Grid>
+    </ContentPage.Content>
+</ContentPage>

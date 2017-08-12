@@ -137,6 +137,15 @@
     <Reference Include="Syncfusion.SfPdfViewer.XForms.iOS">
       <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfPdfViewer.XForms.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlphaThea\AlphaThea.csproj">
@@ -173,6 +182,9 @@
     <BundleResource Include="Resources\book.png" />
     <BundleResource Include="Resources\heart.png" />
     <BundleResource Include="Resources\time.png" />
+    <BundleResource Include="Resources\search.png" />
+    <BundleResource Include="Resources\student.png" />
+    <BundleResource Include="Resources\award.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

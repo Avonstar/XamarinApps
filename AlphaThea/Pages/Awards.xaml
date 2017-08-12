@@ -16,7 +16,7 @@
     
     <ContentPage.Content>
         
-        <StackLayout VerticalOptions="FillAndExpand" Padding="40">
+        <StackLayout VerticalOptions="FillAndExpand" Padding="20">
             <syncfusion:SfDataGrid x:Name="dataGrid"
                 AllowResizingColumn="true"
                 AutoGenerateColumns="false"
@@ -34,14 +34,15 @@
                 <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
 
                 <syncfusion:GridTextColumn HeaderFontAttribute="Bold"
-                                       HeaderText="Awarded"
-                                       HeaderTextAlignment="Start"
-                                       LineBreakMode="WordWrap"
-                                       LoadUIView="False"
-                                       MappingName="Created"
-                                       Format="dd/MM/yyyy"
-                                        Padding="5, 0, 0, 0"
-                                       TextAlignment="Start">
+                                            HeaderText="Awarded"
+                                            HeaderTextAlignment="Start"
+                                            LineBreakMode="WordWrap"
+                                            LoadUIView="False"
+                                            MappingName="Created"
+                                            ColumnSizer="Auto"
+                                            Format="dd/MM/yyyy"
+                                            Padding="5, 0, 0, 0"
+                                            TextAlignment="Start">
 
                     <syncfusion:GridTextColumn.HeaderCellTextSize>
                         <OnPlatform x:TypeArguments="x:Double"
