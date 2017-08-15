@@ -18,9 +18,15 @@ namespace AlphaThea
             MainPage = new AlphaTheaPage();
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
             // Handle when your app starts
+
+            await UsrDataManager.GetNewToken();
+
+            await UsrDataManager.GetPupilsAsync();
+
+
         }
 
         protected override void OnSleep()
@@ -28,9 +34,12 @@ namespace AlphaThea
             // Handle when your app sleeps
         }
 
-        protected override void OnResume()
+        protected async override void OnResume()
         {
-            // Handle when your app resumes
+			// Handle when your app resumes
+			await UsrDataManager.GetNewToken();
+
+			await UsrDataManager.GetPupilsAsync();
         }
     }
 }

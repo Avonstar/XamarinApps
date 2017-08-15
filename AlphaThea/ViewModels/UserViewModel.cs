@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using AlphaThea.Services;
 using AlphaThea.Models;
-
+using System.Collections.ObjectModel;
 
 namespace AlphaThea.ViewModels
 {
@@ -20,7 +20,7 @@ namespace AlphaThea.ViewModels
 
             IsBusy = false;
 
-            FetchUserDataCommand = new Command(async () => await GetTokenAndSpecificUserData(),() => !IsBusy);
+            //FetchUserDataCommand = new Command(async () => await GetSpecificUserData(),() => !IsBusy);
 
         }
 
@@ -31,6 +31,8 @@ namespace AlphaThea.ViewModels
         string _firstName="";
         string _lastName="";
         string[] _roles;
+
+        ObservableCollection<User> _studentCollection;
 
         bool _isbusy;
 
@@ -138,7 +140,13 @@ namespace AlphaThea.ViewModels
 
         }
 
-		public async Task GetTokenAndSpecificUserData()
+		public ObservableCollection<User> StudentCollection
+		{
+			get { return _studentCollection; }
+			set { _studentCollection = value; }
+		}
+
+		public async Task GetSpecificUserData()
 		{
 
 			try
@@ -169,10 +177,9 @@ namespace AlphaThea.ViewModels
 				throw new Exception(ex.Message);
 			}
 
-
 		}
 
-		public async Task GetTokenAndAllsUsers()
+		public async Task GetAllsUsers()
 		{
 
 			try
@@ -180,21 +187,9 @@ namespace AlphaThea.ViewModels
 
 				IsBusy = true;
 
-				var usr = new User();
-				//usr = await userdatamanager.RefreshUserDataAsync();
-				usr = await App.UsrDataManager.RefreshUserDataAsync();
-
-				Uid = usr.uid;
-				Username = usr.username;
-				Email = usr.email;
-				Status = usr.status;
-
-				FirstName = usr.firstName;
-				LastName = usr.lastName;
-				Roles = usr.roles;
+				StudentCollection = await App.UsrDataManager.RefreshUsersAsync();
 
 				IsBusy = false;
-
 
 			}
 			catch (Exception ex)

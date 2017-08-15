@@ -6,7 +6,7 @@
 	<ContentPage.Content>
         <StackLayout Padding="40" Spacing="10">
             <Image Source="thameslogo.png" />
-            <Label Text="Parent's  Application" HeightRequest="30" FontSize="16"/>
+            <Label Text="Parent's  Application" HeightRequest="30" FontSize="16" HorizontalTextAlignment="Center"/>
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

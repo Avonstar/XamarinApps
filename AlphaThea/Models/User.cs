@@ -11,5 +11,6 @@
 		public string lastName { get; set; }
 		public string[] roles { get; set; }
 
+        public string fullName { get; set; }
 	}
 }

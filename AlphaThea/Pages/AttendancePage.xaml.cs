@@ -47,6 +47,8 @@ namespace AlphaThea.Pages
 
             await viewModel.GetAttendanceData();
 
+            Chart.Series.Clear();
+
             pieSeries.ItemsSource = viewModel.AttendancePie;
 
             Chart.BindingContext = viewModel;

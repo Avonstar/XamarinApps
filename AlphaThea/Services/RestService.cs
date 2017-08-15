@@ -26,146 +26,83 @@ namespace AlphaThea.Services
             _password = Constants.Password;
         }
 
-        public async Task<ObservableCollection<User>> GetAllUsersAsync()
+        public async Task GetAllPupilsAsync()
         {
-			var uri = new Uri(Constants.TokenUrl);
-
 			try
 			{
 
-				string jsonString = @"{""username"" : ""myusername"", ""password"" : ""mypassword""}";
+				if (!string.IsNullOrWhiteSpace(_token))
+				{
+					_client.DefaultRequestHeaders.Clear();
+					_client.DefaultRequestHeaders.Add("username", _user);
+					_client.DefaultRequestHeaders.Add("password", _password);
+					_client.DefaultRequestHeaders.Add("token", _token);
 
-				jsonString = jsonString.Replace("myusername", _user);
-				var jsonData = jsonString.Replace("mypassword", _password);
+				}
 
-				var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+				var response = _client.GetAsync(Constants.AllUsersUrl).Result;
 
-				HttpResponseMessage response = await _client.PostAsync(uri, content);
-
-				// this result string should be something like: "{"token":"rgh2ghgdsfds"}"
 				var result = await response.Content.ReadAsStringAsync();
 
-				Token token = JsonConvert.DeserializeObject<Token>(result);
-				//var tok = token.token;
-				_token = token.token;
-
-				try
-				{
-
-					if (!string.IsNullOrWhiteSpace(_token))
-					{
-						_client.DefaultRequestHeaders.Clear();
-						_client.DefaultRequestHeaders.Add("username", _user);
-						_client.DefaultRequestHeaders.Add("password", _password);
-						_client.DefaultRequestHeaders.Add("token", _token);
-
-					}
-
-					response = _client.GetAsync(Constants.AllUsersUrl).Result;
-
-					result = await response.Content.ReadAsStringAsync();
-
-					//var usr = new User();
-					var usrs = new List<User>();
-
-					usrs = JsonConvert.DeserializeObject<List<User>>(result);
-
-					var users = new ObservableCollection<User>();
-
-                    //lateAm = usrattendances.Where(u => u.lateAm == true).Count();
-
-                    var uu = usrs.Where(u => u.roles.Contains("ROLE_PUPIL"));
-
-
-					//foreach (var item in usrs)
-					//{
-					//	greenpoints.Add(new GreenPoints() { Created = item.created, AwardedBy = item.approvedBy.username, Description = item.description, Points = item.points });
-
-					//}
-
-					return users;
-				}
-				catch (Exception ex)
-				{
-
-					throw new Exception(ex.Message);
-
-				}
-
+				App.Current.Properties.Add("AllUsers", result);
 
 			}
 			catch (Exception ex)
 			{
-				//await DisplayAlert("ERROR", ex.Message, "OK");
+
 				throw new Exception(ex.Message);
+
+			}
+        }
+
+        public async Task<ObservableCollection<User>> GetAllStudentsAsync()
+        {
+			try
+			{
+
+				if (!string.IsNullOrWhiteSpace(_token))
+				{
+					_client.DefaultRequestHeaders.Clear();
+					_client.DefaultRequestHeaders.Add("username", _user);
+					_client.DefaultRequestHeaders.Add("password", _password);
+					_client.DefaultRequestHeaders.Add("token", _token);
+
+				}
+
+				var response = _client.GetAsync(Constants.AllUsersUrl).Result;
+
+				var result = await response.Content.ReadAsStringAsync();
+
+                var usrs = new List<User>();
+
+				usrs = JsonConvert.DeserializeObject<List<User>>(result);
+
+                var students = usrs.Where(u => u.roles.Contains("ROLE_PUPIL"));
+
+                //ObservableCollection<User> pupils = new ObservableCollection<User>(students);
+
+                var pupils = new ObservableCollection<User>();
+
+                foreach(var item in students)
+                {
+                    pupils.Add(new User() { firstName = item.firstName, lastName = item.lastName, uid = item.uid, 
+                                            email=item.email, fullName=item.firstName+" " + item.lastName});
+                }
+
+				return pupils;
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception(ex.Message);
+
 			}
 
 		}
 
-        public async Task<Attendance> GetUserAttendanceAsync()
+        public async Task GetTokenAsync()
         {
-            
-			try
-			{
-
-				try
-				{
-                    
-
-                    if (!string.IsNullOrWhiteSpace(_token))
-					{
-						_client.DefaultRequestHeaders.Clear();
-						_client.DefaultRequestHeaders.Add("username", _user);
-						_client.DefaultRequestHeaders.Add("password", _password);
-						_client.DefaultRequestHeaders.Add("token", _token);
-
-					}
-
-                    HttpResponseMessage response = _client.GetAsync(Constants.AttendanceUrl).Result;
-
-                    var result = await response.Content.ReadAsStringAsync();
-
-                    var usrattendances= new List<UserAttendance>();
-
-                    usrattendances = JsonConvert.DeserializeObject<List<UserAttendance>>(result);
-
-                    int lateAm = 0;
-                    int absentAm = 0;
-                    int absentPm = 0;
-
-                    lateAm = usrattendances.Where(u => u.lateAm == true).Count();
-                    absentAm = usrattendances.Where(u => u.absentAm == true).Count();
-                    absentPm = usrattendances.Where(u => u.absentPm == true).Count();
-
-                    var att = new Attendance();
-
-                    att.LateAm = lateAm;
-                    att.AbsentAm = absentAm;
-                    att.AbsentPm = absentPm;
-
-					return att;
-				}
-				catch (Exception ex)
-				{
-
-					throw new Exception(ex.Message);
-
-				}
-
-
-			}
-			catch (Exception ex)
-			{
-				//await DisplayAlert("ERROR", ex.Message, "OK");
-				throw new Exception(ex.Message);
-			}
-
-        }
-
-        public async Task<User> GetUserDataAsync()
-        {
-
-			var uri = new Uri(Constants.TokenUrl);
+            var uri = new Uri(Constants.TokenUrl);
 
             try
             {
@@ -179,162 +116,169 @@ namespace AlphaThea.Services
 
                 HttpResponseMessage response = await _client.PostAsync(uri, content);
 
-                // this result string should be something like: "{"token":"rgh2ghgdsfds"}"
                 var result = await response.Content.ReadAsStringAsync();
 
                 Token token = JsonConvert.DeserializeObject<Token>(result);
-                //var tok = token.token;
+
                 _token = token.token;
 
-                try
-                {
-
-                    if (!string.IsNullOrWhiteSpace(_token))
-                    {
-                        _client.DefaultRequestHeaders.Clear();
-                        _client.DefaultRequestHeaders.Add("username", _user);
-                        _client.DefaultRequestHeaders.Add("password", _password);
-                        _client.DefaultRequestHeaders.Add("token", _token);
-
-                    }
-
-                    response = _client.GetAsync(Constants.SpecificUserUrl).Result;
-
-                    result = await response.Content.ReadAsStringAsync();
-
-                    var usr = new User();
-                    //Users = new List<User>();
-
-                    usr = JsonConvert.DeserializeObject<User>(result);
-
-                    return usr;
-                }
-                catch (Exception ex)
-                {
-
-                    throw new Exception(ex.Message);
-
-                }
-
-
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                //await DisplayAlert("ERROR", ex.Message, "OK");
                 throw new Exception(ex.Message);
-	        }
-
+            }
         }
 
-   //     public async Task<List<GreenPoints>> GetUserGreenPointsAsync()
-   //     {
-			//try
-			//{
-
-			//	try
-			//	{
-
-
-			//		if (!string.IsNullOrWhiteSpace(_token))
-			//		{
-			//			_client.DefaultRequestHeaders.Clear();
-			//			_client.DefaultRequestHeaders.Add("username", _user);
-			//			_client.DefaultRequestHeaders.Add("password", _password);
-			//			_client.DefaultRequestHeaders.Add("token", _token);
-
-			//		}
-
-			//		HttpResponseMessage response = _client.GetAsync(Constants.GreenPointsUrl).Result;
-
-			//		var result = await response.Content.ReadAsStringAsync();
-
-			//		var usrgreenpoints = new List<UserGreenPoints>();
-
-			//		usrgreenpoints = JsonConvert.DeserializeObject<List<UserGreenPoints>>(result);
-
-   //                 var greenpoints = new List<GreenPoints>();
-
-
-   //                 foreach (var item in usrgreenpoints)
-   //                 {
-   //                     greenpoints.Add(new GreenPoints(){awardedBy=item.approvedBy.username, points=item.points, description=item.description});
-
-   //                 }
-
-
-			//		return greenpoints;
-			//	}
-			//	catch (Exception ex)
-			//	{
-                    
-
-			//		throw new Exception(ex.Message);
-
-			//	}
-
-
-			//}
-			//catch (Exception ex)
-			//{
-			//	//await DisplayAlert("ERROR", ex.Message, "OK");
-			//	throw new Exception(ex.Message);
-			//}
-        //}
-
-		public async Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync()
-		{
+        public async Task<Attendance> GetUserAttendanceAsync()
+        {
+            
 			try
 			{
+                
 
-				try
+                if (!string.IsNullOrWhiteSpace(_token))
 				{
-
-
-					if (!string.IsNullOrWhiteSpace(_token))
-					{
-						_client.DefaultRequestHeaders.Clear();
-						_client.DefaultRequestHeaders.Add("username", _user);
-						_client.DefaultRequestHeaders.Add("password", _password);
-						_client.DefaultRequestHeaders.Add("token", _token);
-
-					}
-
-					HttpResponseMessage response = _client.GetAsync(Constants.GreenPointsUrl).Result;
-
-					var result = await response.Content.ReadAsStringAsync();
-
-					var usrgreenpoints = new List<UserGreenPoints>();
-
-					usrgreenpoints = JsonConvert.DeserializeObject<List<UserGreenPoints>>(result);
-
-                    //var greenpoints = new List<GreenPoints>();
-
-                    var greenpoints = new ObservableCollection<GreenPoints>();
-
-					foreach (var item in usrgreenpoints)
-					{
-						greenpoints.Add(new GreenPoints() { Created = item.created, AwardedBy = item.approvedBy.username, Description = item.description, Points = item.points });
-
-					}
-
-
-					return greenpoints;
-				}
-				catch (Exception ex)
-				{
-
-
-					throw new Exception(ex.Message);
+					_client.DefaultRequestHeaders.Clear();
+					_client.DefaultRequestHeaders.Add("username", _user);
+					_client.DefaultRequestHeaders.Add("password", _password);
+					_client.DefaultRequestHeaders.Add("token", _token);
 
 				}
 
+				string id = null;
 
+				if (Application.Current.Properties.ContainsKey("UserId"))
+				{
+					id = Application.Current.Properties["UserId"] as string;
+
+				}
+
+				var attendanceurl = Constants.AttendanceUrl.Replace("XXXX", id);
+                //var attendanceurl = Constants.AttendanceUrl;
+
+                HttpResponseMessage response = _client.GetAsync(attendanceurl).Result;
+
+                var result = await response.Content.ReadAsStringAsync();
+
+                var usrattendances= new List<UserAttendance>();
+
+                usrattendances = JsonConvert.DeserializeObject<List<UserAttendance>>(result);
+
+                int lateAm = 0;
+                int absentAm = 0;
+                int absentPm = 0;
+
+				lateAm = usrattendances.Where(u => u.lateAm == true).Count();
+				absentAm = usrattendances.Where(u => u.absentAm == true).Count();
+				absentPm = usrattendances.Where(u => u.absentPm == true).Count();
+
+                var att = new Attendance();
+
+                att.LateAm = lateAm;
+                att.AbsentAm = absentAm;
+                att.AbsentPm = absentPm;
+
+				return att;
 			}
 			catch (Exception ex)
 			{
-				//await DisplayAlert("ERROR", ex.Message, "OK");
+
+				throw new Exception(ex.Message);
+
+			}
+
+        }
+
+        public async Task<User> GetUserDataAsync()
+        {		
+
+            try
+            {
+
+                if (!string.IsNullOrWhiteSpace(_token))
+                {
+                    _client.DefaultRequestHeaders.Clear();
+                    _client.DefaultRequestHeaders.Add("username", _user);
+                    _client.DefaultRequestHeaders.Add("password", _password);
+                    _client.DefaultRequestHeaders.Add("token", _token);
+
+                }
+
+                //var response = _client.GetAsync(Constants.SpecificUserUrl).Result;
+
+                var userurl = Constants.UserUrl;
+
+                var response = _client.GetAsync(userurl).Result;
+
+                var result = await response.Content.ReadAsStringAsync();
+
+                var usr = new User();
+
+                usr = JsonConvert.DeserializeObject<User>(result);
+
+                return usr;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+
+            }
+
+        }
+
+
+		public async Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync()
+		{
+			
+			try
+			{
+
+
+				if (!string.IsNullOrWhiteSpace(_token))
+				{
+					_client.DefaultRequestHeaders.Clear();
+					_client.DefaultRequestHeaders.Add("username", _user);
+					_client.DefaultRequestHeaders.Add("password", _password);
+					_client.DefaultRequestHeaders.Add("token", _token);
+
+				}
+
+                string id=null;
+
+                if(Application.Current.Properties.ContainsKey("UserId"))
+                {
+                    id = Application.Current.Properties["UserId"] as string;
+
+                }
+
+                var greenpointsurl = Constants.GreenPointsUrl.Replace("XXXX", id);
+
+				HttpResponseMessage response = _client.GetAsync(greenpointsurl).Result;
+
+				var result = await response.Content.ReadAsStringAsync();
+
+				var usrgreenpoints = new List<UserGreenPoints>();
+
+				usrgreenpoints = JsonConvert.DeserializeObject<List<UserGreenPoints>>(result);
+
+                //var greenpoints = new List<GreenPoints>();
+
+                var greenpoints = new ObservableCollection<GreenPoints>();
+
+				foreach (var item in usrgreenpoints)
+				{
+					greenpoints.Add(new GreenPoints() { Created = item.created, AwardedBy = item.approvedBy.username, Description = item.description, Points = item.points });
+
+				}
+
+				return greenpoints;
+			}
+			catch (Exception ex)
+			{
 				throw new Exception(ex.Message);
 			}
+			
 		}
 
     }

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using AlphaThea.Models;
 using AlphaThea.ViewModels;
-
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace AlphaThea.Pages
@@ -16,14 +19,67 @@ namespace AlphaThea.Pages
             BindingContext = viewModel;
         }
 
-		protected override async void OnAppearing()
+		protected override void OnAppearing()
 		{
 
 			base.OnAppearing();
 
-			BindingContext = viewModel;
+            BindingContext = viewModel;
 
-            await viewModel.GetTokenAndSpecificUserData();
+			var usrs = new List<User>();
+
+            string result=null;
+
+			if (App.Current.Properties.ContainsKey("AllUsers"))
+			{
+				result = App.Current.Properties["AllUsers"] as string;
+			}
+
+			usrs = JsonConvert.DeserializeObject<List<User>>(result);
+
+			var students = usrs.Where(u => u.roles.Contains("ROLE_PUPIL"));
+
+			var pupils = new ObservableCollection<User>();
+
+			foreach (var item in students)
+			{
+				pupils.Add(new User()
+				{
+					firstName = item.firstName,
+					lastName = item.lastName,
+					uid = item.uid,
+					email = item.email,
+					fullName = item.firstName + " " + item.lastName
+				});
+			}
+
+            viewModel.StudentCollection = pupils;
+
+            //BindingContext = viewModel;
+
+            studentAutoComplete.DataSource = pupils;
+
+            studentAutoComplete.DisplayMemberPath = "fullName";
+
+			studentAutoComplete.SelectedValuePath = "uid";
+
+            string userid=null;
+
+			studentAutoComplete.SelectionChanged += (sender, e) =>
+			{
+				//DisplayAlert("Selection Changed", "Selected Value: " + studentAutoComplete.SelectedValue.ToString(), "OK");
+                userid=studentAutoComplete.SelectedValue.ToString();
+
+                var usr = (User)e.Value;
+
+                viewModel.FirstName=usr.firstName;
+                viewModel.LastName = usr.lastName;
+                viewModel.Uid = usr.uid;
+                viewModel.Email = usr.email;
+
+                Application.Current.Properties["UserId"] = userid;
+
+			};
 
 		}
     }

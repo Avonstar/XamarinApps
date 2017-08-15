@@ -95,35 +95,41 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Data.Portable">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.Data.Portable.dll</HintPath>
+    <Reference Include="Syncfusion.SfAutoComplete.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.GridCommon.Portable">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.GridCommon.Portable.dll</HintPath>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.XForms">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfDataGrid.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.XForms.iOS">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfDataGrid.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.iOS">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfNumericTextBox.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.XForms">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfNumericTextBox.XForms.iOS">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfNumericTextBox.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SFChart.iOS">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SFChart.iOS.dll</HintPath>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.XForms">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfChart.XForms.dll</HintPath>
+      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.XForms.iOS">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
+      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Data.Portable">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.Data.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.Portable">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfDataGrid.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfDataGrid.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfNumericTextBox.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms.iOS">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfNumericTextBox.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Portable">
       <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.Compression.Portable.dll</HintPath>
@@ -136,15 +142,6 @@
     </Reference>
     <Reference Include="Syncfusion.SfPdfViewer.XForms.iOS">
       <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.15.2.0.46\lib\Xamarin.iOS10\Syncfusion.SfPdfViewer.XForms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfAutoComplete.iOS">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfAutoComplete.XForms">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfAutoComplete.XForms.iOS">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -22,6 +22,8 @@ namespace AlphaThea.Pages
 
 			base.OnAppearing();
 
+            //DisplayAlert("User ID","The User Id is" + Application.Current.Properties["UserId"],"OK");
+
             dataGrid.BindingContext = viewModel;
 
 			var greenPoints = await viewModel.GetGreenPointsListData();

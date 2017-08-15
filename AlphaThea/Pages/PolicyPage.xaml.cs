@@ -1,5 +1,6 @@
 ﻿
 using Syncfusion.SfPdfViewer.XForms;
+using Syncfusion.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
