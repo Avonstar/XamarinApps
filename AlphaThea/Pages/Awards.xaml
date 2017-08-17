@@ -18,6 +18,7 @@
         
         <StackLayout VerticalOptions="FillAndExpand" Padding="20">
             <syncfusion:SfDataGrid x:Name="dataGrid"
+                ItemsSource="{Binding GreenPoints}"
                 AllowResizingColumn="true"
                 AutoGenerateColumns="false"
                 ColumnSizer="Star"

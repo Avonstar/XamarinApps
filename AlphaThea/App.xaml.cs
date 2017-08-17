@@ -34,12 +34,12 @@ namespace AlphaThea
             // Handle when your app sleeps
         }
 
-        protected async override void OnResume()
+        protected override void OnResume()
         {
 			// Handle when your app resumes
-			await UsrDataManager.GetNewToken();
+			//await UsrDataManager.GetNewToken();
 
-			await UsrDataManager.GetPupilsAsync();
+			//await UsrDataManager.GetPupilsAsync();
         }
     }
 }

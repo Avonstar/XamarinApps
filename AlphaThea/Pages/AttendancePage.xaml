@@ -9,12 +9,29 @@
         
         <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
+            <chart:PieSeries ItemsSource="{Binding AttendancePie}"
+                                XBindingPath="Name"
+                                YBindingPath="Value"
+                                EnableSmartLabels="true"
+                                DataMarkerPosition="OutsideExtended"
+                                ConnectorLineType="Bezier"
+                                StartAngle="75"
+                                EndAngle="435">
+
+                    <chart:PieSeries.DataMarker>
+
+                        <chart:ChartDataMarker LabelContent="Percentage"/>
+
+                    </chart:PieSeries.DataMarker>
+
+            </chart:PieSeries>
+            
             <chart:SfChart.Title>
                 <chart:ChartTitle Text="Attendance last 180 days (%)"/>
             </chart:SfChart.Title>
 
             <chart:SfChart.Legend>
-                <chart:ChartLegend DockPosition="Floating" OffsetX="70" OffsetY="70" Orientation="Vertical"/>
+                <chart:ChartLegend DockPosition="Floating" OffsetX="60" OffsetY="60" Orientation="Vertical"/>
             </chart:SfChart.Legend>
 
         </chart:SfChart>

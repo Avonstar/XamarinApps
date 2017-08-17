@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using AlphaThea.Services;
 using AlphaThea.Models;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AlphaThea.ViewModels
 {
@@ -21,6 +24,7 @@ namespace AlphaThea.ViewModels
             IsBusy = false;
 
             //FetchUserDataCommand = new Command(async () => await GetSpecificUserData(),() => !IsBusy);
+
 
         }
 
@@ -143,7 +147,10 @@ namespace AlphaThea.ViewModels
 		public ObservableCollection<User> StudentCollection
 		{
 			get { return _studentCollection; }
-			set { _studentCollection = value; }
+			set { 
+                _studentCollection = value;
+                OnPropertyChanged();
+            }
 		}
 
 		public async Task GetSpecificUserData()
@@ -178,6 +185,39 @@ namespace AlphaThea.ViewModels
 			}
 
 		}
+
+        public void RefreshStudentCollection()
+        {
+			string result = null;
+
+            var usrs = new List<User>();
+
+			if (App.Current.Properties.ContainsKey("AllUsers"))
+			{
+				result = App.Current.Properties["AllUsers"] as string;
+			}
+
+			usrs = JsonConvert.DeserializeObject<List<User>>(result);
+
+			var students = usrs.Where(u => u.roles.Contains("ROLE_PUPIL"));
+
+			var pupils = new ObservableCollection<User>();
+
+			foreach (var item in students)
+			{
+				pupils.Add(new User()
+				{
+					firstName = item.firstName,
+					lastName = item.lastName,
+					uid = item.uid,
+					email = item.email,
+					fullName = item.firstName + " " + item.lastName
+				});
+			}
+
+            StudentCollection = pupils;
+
+        }
 
 		public async Task GetAllsUsers()
 		{

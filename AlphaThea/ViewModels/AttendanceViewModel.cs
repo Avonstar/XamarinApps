@@ -95,47 +95,8 @@ namespace AlphaThea.ViewModels
 			}
 		}
 
-		//public async Task<List<ChartDataModel>> GetAttendanceListData()
-		//{
-
-		//	try
-		//	{
-
-		//		IsBusy = true;
-
-		//		var att = new Attendance();
-		//		att = await App.UsrDataManager.RefreshUserAttendanceAsync();
-
-  //              List<ChartDataModel> attendancePie = new List<ChartDataModel>();
-
-  //              int total = 180;
-
-  //              int lateAmAsPercent = (int)Math.Round((double)(100 * att.LateAm) / total);
-  //              int absentAmAsPercent = (int)Math.Round((double)(100 * att.AbsentAm) / total);
-  //              int absentPmAsPercent = (int)Math.Round((double)(100 * att.AbsentPm) / total);
-  //              int goodDays = 100 - (lateAmAsPercent + absentAmAsPercent + absentPmAsPercent);
-
-		//		attendancePie.Add(new ChartDataModel("Late (am)", lateAmAsPercent));
-		//		attendancePie.Add(new ChartDataModel("Absent (am)", absentAmAsPercent));
-		//		attendancePie.Add(new ChartDataModel("Absent (pm)", absentPmAsPercent));
-  //              attendancePie.Add(new ChartDataModel("No lates or absences", goodDays));
-
-		//		IsBusy = false;
-
-  //              return attendancePie;
-                     
-
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		//await DisplayAlert("ERROR", ex.Message, "OK");
-		//		throw new Exception(ex.Message);
-		//	}
-
-
-		//}
-
-		public async Task GetAttendanceData()
+		
+		public async Task UpdateAttendanceData()
 		{
 
 			try
@@ -160,8 +121,8 @@ namespace AlphaThea.ViewModels
 				attendancePie.Add(new ChartDataModel("Absent (pm)", absentPmAsPercent));
 				attendancePie.Add(new ChartDataModel("No lates/ absences", goodDays));
 
-                //AttendancePie = attendancePie;
-                _attendancePie = attendancePie;
+                AttendancePie = attendancePie;
+                //_attendancePie = attendancePie;
 
 				//LateAm = att.lateAm;
 				//AbsentAm = att.absentAm;
