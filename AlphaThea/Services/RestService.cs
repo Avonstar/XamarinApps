@@ -44,7 +44,17 @@ namespace AlphaThea.Services
 
 				var result = await response.Content.ReadAsStringAsync();
 
+                App.Current.Properties.Remove("AllUsers");
+
 				App.Current.Properties.Add("AllUsers", result);
+
+
+				//Create User Groups association
+				//var usrgrps = new List<UserGroups>();
+
+				//usrgrps = JsonConvert.DeserializeObject<List<UserGroups>>(result);
+
+
 
 			}
 			catch (Exception ex)
@@ -55,7 +65,7 @@ namespace AlphaThea.Services
 			}
         }
 
-        public async Task<ObservableCollection<User>> GetAllStudentsAsync()
+        public async Task<ObservableCollection<DisplayUser>> GetAllStudentsAsync()
         {
 			try
 			{
@@ -81,11 +91,11 @@ namespace AlphaThea.Services
 
                 //ObservableCollection<User> pupils = new ObservableCollection<User>(students);
 
-                var pupils = new ObservableCollection<User>();
+                var pupils = new ObservableCollection<DisplayUser>();
 
                 foreach(var item in students)
                 {
-                    pupils.Add(new User() { firstName = item.firstName, lastName = item.lastName, uid = item.uid, 
+                    pupils.Add(new DisplayUser() { firstName = item.firstName, lastName = item.lastName, uid = item.uid, 
                                             email=item.email, fullName=item.firstName+" " + item.lastName});
                 }
 

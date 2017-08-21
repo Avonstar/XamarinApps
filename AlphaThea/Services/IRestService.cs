@@ -9,7 +9,9 @@ namespace AlphaThea.Services
     public interface IRestService
     {
 
-        Task<ObservableCollection<User>> GetAllStudentsAsync();
+        Task GetTokenAsync();
+
+        Task<ObservableCollection<DisplayUser>> GetAllStudentsAsync();
 
         Task GetAllPupilsAsync();
 
@@ -22,7 +24,6 @@ namespace AlphaThea.Services
 
         Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync();
 
-        Task GetTokenAsync();
 
     }
 }

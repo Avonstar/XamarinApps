@@ -37,7 +37,7 @@ namespace AlphaThea.Services
 
 		}
 
-		public Task<ObservableCollection<User>> RefreshUsersAsync()
+		public Task<ObservableCollection<DisplayUser>> RefreshUsersAsync()
 		{
 
 			return restService.GetAllStudentsAsync();

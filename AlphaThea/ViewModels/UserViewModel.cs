@@ -23,6 +23,8 @@ namespace AlphaThea.ViewModels
 
             IsBusy = false;
 
+            //StudentCollection = new ObservableCollection<User>();
+
             //FetchUserDataCommand = new Command(async () => await GetSpecificUserData(),() => !IsBusy);
 
 
@@ -34,9 +36,10 @@ namespace AlphaThea.ViewModels
         bool _status;
         string _firstName="";
         string _lastName="";
+        string[] _groupNodeIds;
         string[] _roles;
 
-        ObservableCollection<User> _studentCollection;
+        private ObservableCollection<DisplayUser> _studentCollection;
 
         bool _isbusy;
 
@@ -52,8 +55,6 @@ namespace AlphaThea.ViewModels
             get;
 
         }
-
-
 
         public int Uid
         {
@@ -132,6 +133,17 @@ namespace AlphaThea.ViewModels
 
 		}
 
+		public string[] GroupNodeIds
+		{
+			get { return _groupNodeIds; }
+			set
+			{
+				_groupNodeIds = value;
+				OnPropertyChanged();
+			}
+
+		}
+
         public bool IsBusy
         {
             get { return _isbusy; }
@@ -144,7 +156,7 @@ namespace AlphaThea.ViewModels
 
         }
 
-		public ObservableCollection<User> StudentCollection
+		public ObservableCollection<DisplayUser> StudentCollection
 		{
 			get { return _studentCollection; }
 			set { 
@@ -172,7 +184,7 @@ namespace AlphaThea.ViewModels
 
 				FirstName = usr.firstName;
 				LastName = usr.lastName;
-				Roles = usr.roles;
+				//Roles = usr.roles;
 
                 IsBusy = false;
 
@@ -199,24 +211,46 @@ namespace AlphaThea.ViewModels
 
 			usrs = JsonConvert.DeserializeObject<List<User>>(result);
 
-			var students = usrs.Where(u => u.roles.Contains("ROLE_PUPIL"));
+            var students = usrs.Where(u => (u.roles.Contains("ROLE_PUPIL")) && (u.groupNodeIds[0].Length != 0)).ToList();
 
-			var pupils = new ObservableCollection<User>();
+			var pupils = new ObservableCollection<DisplayUser>();
 
 			foreach (var item in students)
 			{
-				pupils.Add(new User()
-				{
-					firstName = item.firstName,
-					lastName = item.lastName,
-					uid = item.uid,
-					email = item.email,
-					fullName = item.firstName + " " + item.lastName
-				});
+
+                try
+                {
+                    
+                    pupils.Add(new DisplayUser()
+                    {
+                        uid = item.uid,
+                        username = item.username,
+                        email = item.email,
+                        firstName = item.firstName,
+                        lastName = item.lastName,
+                        fullName = item.firstName + " " + item.lastName
+                    });
+
+                }
+                catch(Exception ex)
+                {
+
+
+
+                }
 			}
 
-            StudentCollection = pupils;
+            try
+            {
 
+                this.StudentCollection = pupils;
+
+            }
+            catch(Exception ex)
+            {
+
+
+            }
         }
 
 		public async Task GetAllsUsers()

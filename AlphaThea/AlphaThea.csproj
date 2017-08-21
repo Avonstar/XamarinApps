@@ -53,6 +53,9 @@
     <EmbeddedResource Include="Pages\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\HomeworkPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -99,6 +102,12 @@
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HomeworkPage.xaml.cs">
+      <DependentUpon>HomeworkPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DisplayUser.cs" />
+    <Compile Include="Models\UserGroups.cs" />
+    <Compile Include="ViewModels\HomeworkViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

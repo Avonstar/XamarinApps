@@ -27,18 +27,16 @@ namespace AlphaThea.Pages
 
             viewModel.RefreshStudentCollection();
 
-            //studentAutoComplete.BindingContext = viewModel.StudentCollection;
-
             studentAutoComplete.Focus();
 
-            string userid=null;
+            string userid=string.Empty;
 
 			studentAutoComplete.SelectionChanged += (sender, e) =>
 			{
 				//DisplayAlert("Selection Changed", "Selected Value: " + studentAutoComplete.SelectedValue.ToString(), "OK");
                 userid=studentAutoComplete.SelectedValue.ToString();
 
-                var usr = (User)e.Value;
+                var usr = (DisplayUser)e.Value;
 
                 viewModel.FirstName=usr.firstName;
                 viewModel.LastName = usr.lastName;

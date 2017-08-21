@@ -22,6 +22,10 @@
 
         </local:AttendancePage>
 
+        <local:HomeworkPage Title="Homework" Icon="homework.png">
+
+        </local:HomeworkPage>
+
         <local:PolicyPage Title="School Policies" Icon="book.png">
 
         </local:PolicyPage>
