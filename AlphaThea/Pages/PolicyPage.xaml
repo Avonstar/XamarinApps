@@ -3,7 +3,7 @@
             xmlns:sfpdfviewer="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms"
             xmlns:local="clr-namespace:AlphaThea.Helper;assembly=AlphaThea"
             x:Class="AlphaThea.Pages.PolicyPage"
-            Padding="0,20,0,0">
+            Padding="0,60,0,0">
     <Grid x:Name="mainGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
       <Grid.RowDefinitions>
         <RowDefinition Height="50" />

@@ -15,11 +15,11 @@
             </Grid.RowDefinitions>
             <!--<Label Text="Student Search" Grid.Row="0" FontSize="20"  FontAttributes="Bold"  HorizontalOptions="Start" VerticalOptions="Center"/>-->
             <StackLayout Orientation="Vertical" Grid.Row="1" >
-                <!--<Image Source="thameslogo.png" />-->
                 <Label Text="Student" HeightRequest="30" FontSize="16" HorizontalOptions="Start"/>
                 <autocomplete:SfAutoComplete x:Name="studentAutoComplete"
                     DataSource="{Binding StudentCollection}"
                     Watermark="Enter Student Name"
+                    BackgroundColor="#f9f0b6"
                     IsEnabled="true"
                     SuggestionMode="StartsWith" AutoCompleteMode="Suggest"
                     DisplayMemberPath="fullName" SelectedValuePath="uid"

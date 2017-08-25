@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="AlphaThea.Pages.HomeworkPage"
-    xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+    xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
     xmlns:local="clr-namespace:AlphaThea;assembly=AlphaThea"
-    xmlns:customstyles="clr-namespace:AlphaThea.CustomStyles;assembly=AlphaThea">
-
+    xmlns:customstyles="clr-namespace:AlphaThea.CustomStyles;assembly=AlphaThea"
+    x:Class="AlphaThea.Pages.HomeworkPage"
+    Padding="0,60,0,0">
     <ContentPage.Resources>
         <ResourceDictionary>
             <customstyles:Blue x:Key="blue" />
@@ -15,14 +15,134 @@
     </ContentPage.Resources>
     
 	<ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand" Padding="20">
-            <syncfusion:SfDataGrid x:Name="homeworkGrid"
+        
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                <Label Text="Start Date" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                <DatePicker BackgroundColor="#f9f0b6" HorizontalOptions="EndAndExpand" VerticalOptions="Center" 
+                    Format="dd-MMM-yy"
+                    MinimumDate="9/1/2016" MaximumDate="7/1/2018" 
+                    Date="{Binding Path=StartDate}"
+                    DateSelected="Handle_StartDateSelected"/>
+                <Label Text="End Date" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <DatePicker BackgroundColor="#f9f0b6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" 
+                    Format="dd-MMM-yy"
+                    MinimumDate="9/1/2016" MaximumDate="7/1/2018" 
+                    Date="{Binding Path=EndDate}"
+                    DateSelected="Handle_EndDateSelected"/>
+            </StackLayout>
+
+            <sfgrid:SfDataGrid x:Name="homeworkGrid"
                 AllowResizingColumn="true"
                 AutoGenerateColumns="false"
                 ColumnSizer="Star"
                 GridStyle="{StaticResource green}"
-                VerticalOptions="FillAndExpand">
-            </syncfusion:SfDataGrid>
+                ItemsSource="{Binding HomeworkCollection}">
+
+                <sfgrid:SfDataGrid.HeaderRowHeight>
+                <OnPlatform x:TypeArguments="x:Double"
+                            Android="40"
+                            WinPhone="55"
+                            iOS="40" />
+                </sfgrid:SfDataGrid.HeaderRowHeight>
+
+                <sfgrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                <sfgrid:GridTextColumn HeaderFontAttribute="Bold"
+                                            HeaderText="Date Set"
+                                            HeaderTextAlignment="Start"
+                                            LineBreakMode="WordWrap"
+                                            LoadUIView="False"
+                                            MappingName="dateSet"
+                                            ColumnSizer="Auto"
+                                            Format="dd/MM/yyyy"
+                                            Padding="5, 0, 0, 0"
+                                            TextAlignment="Start">
+
+                    <sfgrid:GridTextColumn.HeaderCellTextSize>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="14"
+                                    WinPhone="12"
+                                    iOS="12" />
+                    </sfgrid:GridTextColumn.HeaderCellTextSize>
+
+                    <sfgrid:GridTextColumn.MaximumWidth>
+                        <OnIdiom x:TypeArguments="x:Double"
+                                 Phone="150"
+                                 Tablet="300" />
+                    </sfgrid:GridTextColumn.MaximumWidth>
+
+                    <sfgrid:GridTextColumn.CellTextSize>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="14"
+                                    WinPhone="12"
+                                    iOS="12" />
+                    </sfgrid:GridTextColumn.CellTextSize>
+                </sfgrid:GridTextColumn>
+          
+                <sfgrid:GridTextColumn HeaderFontAttribute="Bold"
+                                       HeaderText="Title"
+                                       HeaderTextAlignment="Start"
+                                       LineBreakMode="WordWrap"
+                                       LoadUIView="False"
+                                       MappingName="title"
+                                       Padding="5, 0, 0, 0"
+                                       TextAlignment="Start">
+
+                    <sfgrid:GridTextColumn.HeaderCellTextSize>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="14"
+                                    WinPhone="12"
+                                    iOS="12" />
+                    </sfgrid:GridTextColumn.HeaderCellTextSize>
+
+                    <sfgrid:GridTextColumn.MaximumWidth>
+                        <OnIdiom x:TypeArguments="x:Double"
+                                 Phone="150"
+                                 Tablet="300" />
+                    </sfgrid:GridTextColumn.MaximumWidth>
+
+                    <sfgrid:GridTextColumn.CellTextSize>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="14"
+                                    WinPhone="12"
+                                    iOS="12" />
+                    </sfgrid:GridTextColumn.CellTextSize>
+                </sfgrid:GridTextColumn>
+
+                <sfgrid:GridTextColumn HeaderFontAttribute="Bold"
+                                       HeaderText="Details"
+                                       HeaderTextAlignment="Start"
+                                       LineBreakMode="WordWrap"
+                                       LoadUIView="False"
+                                       MappingName="body"
+                                       Padding="5, 0, 0, 0"
+                                       TextAlignment="Start">
+
+                    <sfgrid:GridTextColumn.HeaderCellTextSize>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="14"
+                                    WinPhone="12"
+                                    iOS="12" />
+                    </sfgrid:GridTextColumn.HeaderCellTextSize>
+
+                    <sfgrid:GridTextColumn.MaximumWidth>
+                        <OnIdiom x:TypeArguments="x:Double"
+                                 Phone="150"
+                                 Tablet="300" />
+                    </sfgrid:GridTextColumn.MaximumWidth>
+
+                    <sfgrid:GridTextColumn.CellTextSize>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="14"
+                                    WinPhone="12"
+                                    iOS="12" />
+                    </sfgrid:GridTextColumn.CellTextSize>
+                </sfgrid:GridTextColumn>
+            </sfgrid:SfDataGrid.Columns>
+                    
+        </sfgrid:SfDataGrid>
+        <Button Text="Fetch" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Command="{Binding UpdateHomeworkCommand}"/>
+
        </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

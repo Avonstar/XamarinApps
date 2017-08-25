@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-using System;
 using AlphaThea.Services;
 using AlphaThea.Pages;
 
@@ -24,8 +23,11 @@ namespace AlphaThea
 
             await UsrDataManager.GetNewToken();
 
+            //Get all users
             await UsrDataManager.GetPupilsAsync();
 
+            //Get all lesson groups
+            await UsrDataManager.GetLessonGroups();
 
         }
 

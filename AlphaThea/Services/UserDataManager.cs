@@ -16,6 +16,13 @@ namespace AlphaThea.Services
             restService = service;
         }
 
+		public Task GetNewToken()
+		{
+
+			return restService.GetTokenAsync();
+
+		}
+
         public Task<User> RefreshUserDataAsync()
         {
 
@@ -37,12 +44,19 @@ namespace AlphaThea.Services
 
 		}
 
-		public Task<ObservableCollection<DisplayUser>> RefreshUsersAsync()
+		public Task<ObservableCollection<DisplayHomework>> RefreshUserHomeworkAsync(DateTime StartDate, DateTime EndDate, List<string> GroupIds)
 		{
 
-			return restService.GetAllStudentsAsync();
+			return restService.GetHomeworkAsync(StartDate, EndDate, GroupIds);
 
 		}
+
+		//public Task<ObservableCollection<DisplayUser>> RefreshUsersAsync()
+		//{
+
+		//	return restService.GetAllStudentsAsync();
+
+		//}
 
 		public Task GetPupilsAsync()
 		{
@@ -51,10 +65,10 @@ namespace AlphaThea.Services
 
 		}
 
-        public Task GetNewToken()
+        public Task GetLessonGroups()
         {
 
-            return restService.GetTokenAsync();
+            return restService.GetAllLessonGroupsAsync();
 
         }
 

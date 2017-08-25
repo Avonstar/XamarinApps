@@ -8,6 +8,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using AlphaThea.Models;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace AlphaThea.Services
 {
@@ -26,6 +27,35 @@ namespace AlphaThea.Services
             _password = Constants.Password;
         }
 
+        public async Task GetAllLessonGroupsAsync()
+        {
+            try
+            {
+				if (!string.IsNullOrWhiteSpace(_token))
+				{
+					_client.DefaultRequestHeaders.Clear();
+					_client.DefaultRequestHeaders.Add("username", _user);
+					_client.DefaultRequestHeaders.Add("password", _password);
+					_client.DefaultRequestHeaders.Add("token", _token);
+
+				}
+
+				var response = _client.GetAsync(Constants.LessonGroupsUrl).Result;
+
+				var result = await response.Content.ReadAsStringAsync();
+
+				App.Current.Properties.Remove("AllLessonGroups");
+
+				App.Current.Properties.Add("AllLessonGroups", result);
+                
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+        }
+
         public async Task GetAllPupilsAsync()
         {
 			try
@@ -40,20 +70,14 @@ namespace AlphaThea.Services
 
 				}
 
-				var response = _client.GetAsync(Constants.AllUsersUrl).Result;
+				//var response = _client.GetAsync(Constants.AllUsersUrl).Result;
+                var response = _client.GetAsync(Constants.AllPupilsUrl).Result;
 
 				var result = await response.Content.ReadAsStringAsync();
 
-                App.Current.Properties.Remove("AllUsers");
+                App.Current.Properties.Remove("AllPupils");
 
-				App.Current.Properties.Add("AllUsers", result);
-
-
-				//Create User Groups association
-				//var usrgrps = new List<UserGroups>();
-
-				//usrgrps = JsonConvert.DeserializeObject<List<UserGroups>>(result);
-
+				App.Current.Properties.Add("AllPupils", result);
 
 
 			}
@@ -65,11 +89,11 @@ namespace AlphaThea.Services
 			}
         }
 
-        public async Task<ObservableCollection<DisplayUser>> GetAllStudentsAsync()
+        public async Task<ObservableCollection<DisplayHomework>> GetHomeworkAsync(DateTime StartDate, DateTime EndDate, List<string> GroupIds)
         {
+
 			try
 			{
-
 				if (!string.IsNullOrWhiteSpace(_token))
 				{
 					_client.DefaultRequestHeaders.Clear();
@@ -79,36 +103,101 @@ namespace AlphaThea.Services
 
 				}
 
-				var response = _client.GetAsync(Constants.AllUsersUrl).Result;
+                //string fromDate = "2017-03-01";
+                //string toDate = "2017-04-01";
+                string fromDate = StartDate.ToString("yyyy-MM-dd");
+                string toDate = EndDate.ToString("yyyy-MM-dd");
 
-				var result = await response.Content.ReadAsStringAsync();
+				var specifichomeworkurl = Constants.SpecificHmkBtwnDatesUrl.Replace("fromDate", fromDate);
+                specifichomeworkurl = specifichomeworkurl.Replace("toDate", toDate);
 
-                var usrs = new List<User>();
+                var masterhomeworklist = new List<DisplayHomework>();
 
-				usrs = JsonConvert.DeserializeObject<List<User>>(result);
-
-                var students = usrs.Where(u => u.roles.Contains("ROLE_PUPIL"));
-
-                //ObservableCollection<User> pupils = new ObservableCollection<User>(students);
-
-                var pupils = new ObservableCollection<DisplayUser>();
-
-                foreach(var item in students)
+                foreach (var grpId in GroupIds)
                 {
-                    pupils.Add(new DisplayUser() { firstName = item.firstName, lastName = item.lastName, uid = item.uid, 
-                                            email=item.email, fullName=item.firstName+" " + item.lastName});
+
+                    var grpIdHmwkUrl = specifichomeworkurl.Replace("XXXX", grpId);
+
+                    HttpResponseMessage response = _client.GetAsync(grpIdHmwkUrl).Result;
+
+                    var result = await response.Content.ReadAsStringAsync();
+
+                    var homework = new List<DisplayHomework>();
+
+                    homework = JsonConvert.DeserializeObject<List<DisplayHomework>>(result);
+
+                    foreach(var item in homework)
+                    {
+                        item.body=(Regex.Replace(item.body.ToString(), "<(.|\n)*?>", "")).Replace("&#39;", "'").Replace("&amp;", "&");
+                    }
+
+                    masterhomeworklist.AddRange(homework);
+
                 }
 
-				return pupils;
+				var allhomework = new ObservableCollection<DisplayHomework>();
+
+				foreach (var item in masterhomeworklist)
+				{
+					allhomework.Add(new DisplayHomework() { title = item.title, dateSet = item.dateSet, dateDue = item.dateDue, body = item.body });
+
+				}
+
+                return allhomework;
+
 			}
 			catch (Exception ex)
 			{
-
 				throw new Exception(ex.Message);
-
 			}
 
-		}
+
+        }
+
+        //      public async Task<ObservableCollection<DisplayUser>> GetAllStudentsAsync()
+        //      {
+        //	try
+        //	{
+
+        //		if (!string.IsNullOrWhiteSpace(_token))
+        //		{
+        //			_client.DefaultRequestHeaders.Clear();
+        //			_client.DefaultRequestHeaders.Add("username", _user);
+        //			_client.DefaultRequestHeaders.Add("password", _password);
+        //			_client.DefaultRequestHeaders.Add("token", _token);
+
+        //		}
+
+        //		var response = _client.GetAsync(Constants.AllUsersUrl).Result;
+
+        //		var result = await response.Content.ReadAsStringAsync();
+
+        //              var usrs = new List<User>();
+
+        //		usrs = JsonConvert.DeserializeObject<List<User>>(result);
+
+        //              var students = usrs.Where(u => u.roles.Contains("ROLE_PUPIL"));
+
+        //              //ObservableCollection<User> pupils = new ObservableCollection<User>(students);
+
+        //              var pupils = new ObservableCollection<DisplayUser>();
+
+        //              foreach(var item in students)
+        //              {
+        //                  pupils.Add(new DisplayUser() { firstName = item.firstName, lastName = item.lastName, uid = item.uid, 
+        //                                          email=item.email, fullName=item.firstName+" " + item.lastName});
+        //              }
+
+        //		return pupils;
+        //	}
+        //	catch (Exception ex)
+        //	{
+
+        //		throw new Exception(ex.Message);
+
+        //	}
+
+        //}
 
         public async Task GetTokenAsync()
         {

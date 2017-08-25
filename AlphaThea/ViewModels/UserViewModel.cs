@@ -204,14 +204,15 @@ namespace AlphaThea.ViewModels
 
             var usrs = new List<User>();
 
-			if (App.Current.Properties.ContainsKey("AllUsers"))
+			if (App.Current.Properties.ContainsKey("AllPupils"))
 			{
-				result = App.Current.Properties["AllUsers"] as string;
+				result = App.Current.Properties["AllPupils"] as string;
 			}
 
 			usrs = JsonConvert.DeserializeObject<List<User>>(result);
 
-            var students = usrs.Where(u => (u.roles.Contains("ROLE_PUPIL")) && (u.groupNodeIds[0].Length != 0)).ToList();
+            //var students = usrs.Where(u => (u.roles.Contains("ROLE_PUPIL")) && (u.groupNodeIds[0].Length != 0)).ToList();
+            var students = usrs.Where(u => u.groupNodeIds[0].Length != 0).ToList();
 
 			var pupils = new ObservableCollection<DisplayUser>();
 
@@ -253,27 +254,27 @@ namespace AlphaThea.ViewModels
             }
         }
 
-		public async Task GetAllsUsers()
-		{
+		//public async Task GetAllsUsers()
+		//{
 
-			try
-			{
+		//	try
+		//	{
 
-				IsBusy = true;
+		//		IsBusy = true;
 
-				StudentCollection = await App.UsrDataManager.RefreshUsersAsync();
+		//		StudentCollection = await App.UsrDataManager.RefreshUsersAsync();
 
-				IsBusy = false;
+		//		IsBusy = false;
 
-			}
-			catch (Exception ex)
-			{
-				//await DisplayAlert("ERROR", ex.Message, "OK");
-				throw new Exception(ex.Message);
-			}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		//await DisplayAlert("ERROR", ex.Message, "OK");
+		//		throw new Exception(ex.Message);
+		//	}
 
 
-		}
+		//}
 
     }
 }

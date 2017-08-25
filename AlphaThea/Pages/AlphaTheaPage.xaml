@@ -17,7 +17,7 @@
         <local:Awards Title="Awards" Icon="award.png">
 
         </local:Awards>
-        
+
         <local:AttendancePage Title="Attendance" Icon="time.png">
 
         </local:AttendancePage>
@@ -29,7 +29,7 @@
         <local:PolicyPage Title="School Policies" Icon="book.png">
 
         </local:PolicyPage>
-        
+
     </TabbedPage.Children>
         
 </TabbedPage>

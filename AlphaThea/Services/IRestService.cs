@@ -11,9 +11,11 @@ namespace AlphaThea.Services
 
         Task GetTokenAsync();
 
-        Task<ObservableCollection<DisplayUser>> GetAllStudentsAsync();
+        //Task<ObservableCollection<DisplayUser>> GetAllStudentsAsync();
 
         Task GetAllPupilsAsync();
+
+        Task GetAllLessonGroupsAsync();
 
         Task<User> GetUserDataAsync();
 
@@ -24,6 +26,7 @@ namespace AlphaThea.Services
 
         Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync();
 
+        Task<ObservableCollection<DisplayHomework>> GetHomeworkAsync(DateTime StartDate, DateTime EndDate, List<string> GroupIds);
 
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 using Xamarin.Forms;
 
 namespace AlphaThea.Pages
@@ -9,7 +7,16 @@ namespace AlphaThea.Pages
     {
         public HomePage()
         {
+            
+
             InitializeComponent();
+			//SfBusyIndicator busyIndicator = new SfBusyIndicator();
+			//busyIndicator.AnimationType = AnimationTypes.Battery;
+			//busyIndicator.ViewBoxWidth = 150;
+			//busyIndicator.ViewBoxHeight = 150;
+			//busyIndicator.TextColor = Color.Maroon;
+			//this.Content = busyIndicator;
+            //busyIndicator.IsBusy = false;
         }
     }
 }

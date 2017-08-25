@@ -3,6 +3,7 @@ using AlphaThea.Models;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms.Xaml;
+using AlphaThea.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AlphaThea.Pages

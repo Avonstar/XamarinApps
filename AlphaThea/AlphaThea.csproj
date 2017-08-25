@@ -108,13 +108,12 @@
     <Compile Include="Models\DisplayUser.cs" />
     <Compile Include="Models\UserGroups.cs" />
     <Compile Include="ViewModels\HomeworkViewModel.cs" />
+    <Compile Include="Models\LessonGroup.cs" />
+    <Compile Include="Models\DisplayHomework.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfAutoComplete.XForms">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Data.Portable">
       <HintPath>..\packages\Syncfusion.Xamarin.SfDataGrid.15.3.0.26\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.Data.Portable.dll</HintPath>
@@ -148,6 +147,9 @@
     </Reference>
     <Reference Include="Syncfusion.SfChart.XForms">
       <HintPath>..\..\..\..\Downloads\Custom_Assemblies 2\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

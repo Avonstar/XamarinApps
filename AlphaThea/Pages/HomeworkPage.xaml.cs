@@ -20,9 +20,18 @@ namespace AlphaThea.Pages
         {
             base.OnAppearing();
 
-            viewModel.UpdateHomework();
+            //viewModel.UpdateHomework();
 
+        }
 
+        void Handle_StartDateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
+        {
+            viewModel.StartDate = e.NewDate;
+        }
+
+        void Handle_EndDateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
+        {
+            viewModel.EndDate = e.NewDate;
         }
     }
 }
