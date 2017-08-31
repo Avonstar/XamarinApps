@@ -24,7 +24,7 @@ namespace AlphaThea.Services
 
         //Task<List<GreenPoints>> GetUserGreenPointsAsync();
 
-        Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync();
+        Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync(DateTime StartDate, DateTime EndDate);
 
         Task<ObservableCollection<DisplayHomework>> GetHomeworkAsync(DateTime StartDate, DateTime EndDate, List<string> GroupIds);
 

@@ -49,7 +49,8 @@
 
 		//Green points
 		//public static string GreenPointsUrl = "http://api.s17039536.onlinehome-server.info/web/api/points/?sort=c.created&direction=DESC&from=2017-01-01&to=2017-09-01&awardedTo=393&type=3";
-		public static string GreenPointsUrl = "http://api.s17039536.onlinehome-server.info/web/api/points/?sort=c.created&direction=DESC&from=2017-01-01&to=2017-09-01&awardedTo=XXXX&type=3";
+		//public static string GreenPointsUrl = "http://api.s17039536.onlinehome-server.info/web/api/points/?sort=c.created&direction=DESC&from=2017-01-01&to=2017-09-01&awardedTo=XXXX&type=3";
+        public static string GreenPointsUrl = "http://api.s17039536.onlinehome-server.info/web/api/points/?sort=c.created&direction=DESC&from=fromDate&to=toDate&awardedTo=XXXX&type=3";
 
         //Homework
         public static string SpecificHmkBtwnDatesUrl = "http://api.s17039536.onlinehome-server.info/web/api/content?groupNodeId=XXXX&from=fromDate&to=toDate";

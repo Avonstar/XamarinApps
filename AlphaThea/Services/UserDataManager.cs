@@ -37,11 +37,10 @@ namespace AlphaThea.Services
 
         }
 
-		public Task<ObservableCollection<GreenPoints>> RefreshUserGreenPointsAsync()
+		public Task<ObservableCollection<GreenPoints>> RefreshUserGreenPointsAsync(DateTime StartDate, DateTime EndDate)
 		{
 
-			return restService.GetUserGreenPointsAsync();
-
+			return restService.GetUserGreenPointsAsync(StartDate,EndDate);
 		}
 
 		public Task<ObservableCollection<DisplayHomework>> RefreshUserHomeworkAsync(DateTime StartDate, DateTime EndDate, List<string> GroupIds)

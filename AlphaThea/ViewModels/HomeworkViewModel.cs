@@ -13,7 +13,7 @@ namespace AlphaThea.ViewModels
     public class HomeworkViewModel : INotifyPropertyChanged
     {
 
-        private bool _isbusy;
+        private bool _isbusy = false;
         private DateTime _startdate;
         private DateTime _enddate;
         private ObservableCollection<DisplayHomework> _homework;
@@ -36,7 +36,7 @@ namespace AlphaThea.ViewModels
 			set
 			{
 				_isbusy = value;
-				OnPropertyChanged();
+                OnPropertyChanged();
 			}
 
 		}
@@ -76,9 +76,14 @@ namespace AlphaThea.ViewModels
             get;
         }
 
-        private async void UpdateHomework()
+        public async void UpdateHomework()
         {
-			//Retrieve Lesson Groups
+
+            IsBusy = true;
+
+			await System.Threading.Tasks.Task.Delay(100);
+
+            //Retrieve Lesson Groups
 			string result = null;
 
 			if (App.Current.Properties.ContainsKey("AllLessonGroups"))
@@ -120,9 +125,10 @@ namespace AlphaThea.ViewModels
             }
 
             HomeworkCollection = await App.UsrDataManager.RefreshUserHomeworkAsync(StartDate, EndDate, hmwrkList);
+
+            IsBusy = false;
 			
 		}
-
 
     }
 }

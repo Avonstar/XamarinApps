@@ -18,13 +18,13 @@
 
         </local:Awards>
 
-        <local:AttendancePage Title="Attendance" Icon="time.png">
-
-        </local:AttendancePage>
-
         <local:HomeworkPage Title="Homework" Icon="homework.png">
 
         </local:HomeworkPage>
+
+        <local:AttendancePage Title="Attendance" Icon="time.png">
+
+        </local:AttendancePage>
 
         <local:PolicyPage Title="School Policies" Icon="book.png">
 

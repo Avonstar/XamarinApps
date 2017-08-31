@@ -327,7 +327,7 @@ namespace AlphaThea.Services
         }
 
 
-		public async Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync()
+		public async Task<ObservableCollection<GreenPoints>> GetUserGreenPointsAsync(DateTime StartDate, DateTime EndDate)
 		{
 			
 			try
@@ -353,7 +353,15 @@ namespace AlphaThea.Services
 
                 var greenpointsurl = Constants.GreenPointsUrl.Replace("XXXX", id);
 
-				HttpResponseMessage response = _client.GetAsync(greenpointsurl).Result;
+				//string fromDate = "2017-03-01";
+				//string toDate = "2017-04-01";
+				string fromDate = StartDate.ToString("yyyy-MM-dd");
+				string toDate = EndDate.ToString("yyyy-MM-dd");
+
+				var specificurl = greenpointsurl.Replace("fromDate", fromDate);
+				specificurl = specificurl.Replace("toDate", toDate);
+
+				HttpResponseMessage response = _client.GetAsync(specificurl).Result;
 
 				var result = await response.Content.ReadAsStringAsync();
 

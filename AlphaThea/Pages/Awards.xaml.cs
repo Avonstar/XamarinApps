@@ -13,6 +13,7 @@ namespace AlphaThea.Pages
         {
             InitializeComponent();
 
+            BindingContext = viewModel;
             dataGrid.BindingContext = viewModel;
         }
 
@@ -22,8 +23,18 @@ namespace AlphaThea.Pages
 
 			base.OnAppearing();
 
-            await viewModel.UpdateGreenPoints();
+            //await viewModel.UpdateGreenPoints();
 
+		}
+
+		void Handle_StartDateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
+		{
+			viewModel.StartDate = e.NewDate;
+		}
+
+		void Handle_EndDateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
+		{
+			viewModel.EndDate = e.NewDate;
 		}
 
     }

@@ -110,6 +110,7 @@
     <Compile Include="ViewModels\HomeworkViewModel.cs" />
     <Compile Include="Models\LessonGroup.cs" />
     <Compile Include="Models\DisplayHomework.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -150,6 +151,9 @@
     </Reference>
     <Reference Include="Syncfusion.SfAutoComplete.XForms">
       <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfBusyIndicator.15.3.0.26\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

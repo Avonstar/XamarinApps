@@ -1,6 +1,8 @@
 ﻿using Xamarin.Forms;
 using AlphaThea.Services;
 using AlphaThea.Pages;
+using AlphaThea.ViewModels;
+using System;
 
 namespace AlphaThea
 {
@@ -21,13 +23,30 @@ namespace AlphaThea
         {
             // Handle when your app starts
 
-            await UsrDataManager.GetNewToken();
+            try
+            {
+                
+                homeViewModel.IsBusy = true;
 
-            //Get all users
-            await UsrDataManager.GetPupilsAsync();
+                await UsrDataManager.GetNewToken();
 
-            //Get all lesson groups
-            await UsrDataManager.GetLessonGroups();
+                //Get all users
+                await UsrDataManager.GetPupilsAsync();
+
+                //Get all lesson groups
+                await UsrDataManager.GetLessonGroups();
+
+                homeViewModel.IsBusy = false;
+            }
+            catch(Exception ex)
+            {
+                throw new System.Exception();
+            }
+            finally
+            {
+                homeViewModel.IsBusy = false;
+
+            }
 
         }
 

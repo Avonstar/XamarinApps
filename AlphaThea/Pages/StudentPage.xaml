@@ -2,20 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
-    x:Class="AlphaThea.Pages.StudentPage">
+    x:Class="AlphaThea.Pages.StudentPage" Padding="40">
 
     <ContentPage.Content>
-      <Grid x:Name="sampleLayout" Padding="10">
+      <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <!--<Label Text="Student Search" Grid.Row="0" FontSize="20"  FontAttributes="Bold"  HorizontalOptions="Start" VerticalOptions="Center"/>-->
-            <StackLayout Orientation="Vertical" Grid.Row="1" >
-                <Label Text="Student" HeightRequest="30" FontSize="16" HorizontalOptions="Start"/>
+            <StackLayout Grid.Row="0" Orientation="Vertical">
                 <autocomplete:SfAutoComplete x:Name="studentAutoComplete"
                     DataSource="{Binding StudentCollection}"
                     Watermark="Enter Student Name"
@@ -25,20 +20,34 @@
                     DisplayMemberPath="fullName" SelectedValuePath="uid"
                     HeightRequest="40" MinimumPrefixCharacters="1" MaximumDropDownHeight="150"/>
             </StackLayout>
-            <StackLayout x:Name="buttonaStack" Grid.Row="2">
-                <!--<Button Text="Search" x:Name="searchButton" BackgroundColor="Silver"/>-->
-                <Label Text="First Name"/>
-                <Entry Text="{Binding FirstName}" Placeholder="First Name" BackgroundColor="Silver"/>
 
-                <Label Text="Last Name"/>
-                <Entry Text="{Binding LastName}" Placeholder="Last Name" BackgroundColor="Silver"/>
-
-                <Label Text="User Id" x:Name="userID"/>
-                <Entry Text="{Binding Uid}" Placeholder="User Id" BackgroundColor="Silver"/>
-
-                <Label Text="Email"/>
-                <Entry Text="{Binding Email}" Placeholder="Email" BackgroundColor="Silver"/>
+            <StackLayout Grid.Row="1" Orientation="Vertical" Padding="0, 40, 0, 0">
+                <Grid x:Name="userLayout">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Orientation="Vertical">
+                        <Label Text="First Name"/>
+                        <Entry Text="{Binding FirstName}" Placeholder="First Name" BackgroundColor="Silver"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Orientation="Vertical">
+                        <Label Text="Last Name"/>
+                        <Entry Text="{Binding LastName}" Placeholder="Last Name" BackgroundColor="Silver"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Orientation="Vertical">
+                        <Label Text="User Id" x:Name="userID"/>
+                        <Entry Text="{Binding Uid}" Placeholder="User Id" BackgroundColor="Silver"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Orientation="Vertical">
+                        <Label Text="Email"/>
+                        <Entry Text="{Binding Email}" Placeholder="Email" BackgroundColor="Silver"/>
+                    </StackLayout>
+                </Grid>
             </StackLayout>
-      </Grid>
+        </Grid>
+      
     </ContentPage.Content>
 </ContentPage>

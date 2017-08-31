@@ -15,11 +15,14 @@ namespace AlphaThea.ViewModels
     {
 
         private bool _isbusy;
+		private DateTime _startdate;
+		private DateTime _enddate;
         private ImageSource _greenPointImg;
         private ObservableCollection<GreenPointsFinal> _greenPoints;
 
         public AwardsViewModel()
         {
+            FetchGreenPointsDataCommand = new Command(UpdateGreenPoints);
             IsBusy = false;
         }
 
@@ -47,7 +50,29 @@ namespace AlphaThea.ViewModels
 
         }
 
-        public ImageSource GreenPointImage
+
+		public DateTime StartDate
+		{
+			get { return _startdate; }
+			set
+			{
+				_startdate = value;
+				OnPropertyChanged();
+			}
+		}
+
+		public DateTime EndDate
+		{
+			get { return _enddate; }
+			set
+			{
+				_enddate = value;
+				OnPropertyChanged();
+			}
+		}
+
+
+		public ImageSource GreenPointImage
         {
             get { return _greenPointImg; }
             set
@@ -56,27 +81,47 @@ namespace AlphaThea.ViewModels
             }
         }
 
-        public async Task UpdateGreenPoints()
+        public async void UpdateGreenPoints()
         {
 
-			var greenPoints = new ObservableCollection<GreenPoints>();
-			greenPoints = await App.UsrDataManager.RefreshUserGreenPointsAsync();
+            try
+            {
+                IsBusy = true;
 
-			var greenPointsFinal = new ObservableCollection<GreenPointsFinal>();
+                var greenPoints = new ObservableCollection<GreenPoints>();
 
-			foreach (var gpItem in greenPoints)
-			{
+                await System.Threading.Tasks.Task.Delay(100);
 
-				greenPointsFinal.Add(new GreenPointsFinal()
-				{
-					Created = gpItem.Created,
-					AwardedBy = gpItem.AwardedBy,
-					Description = gpItem.Description,
-					GreenPointsImage = GetGreenPointImage(gpItem.Points)
-				});
-			}
+                greenPoints = await App.UsrDataManager.RefreshUserGreenPointsAsync(StartDate, EndDate);
 
-            GreenPoints = greenPointsFinal;
+                var greenPointsFinal = new ObservableCollection<GreenPointsFinal>();
+
+                foreach (var gpItem in greenPoints)
+                {
+
+                    greenPointsFinal.Add(new GreenPointsFinal()
+                    {
+                        Created = gpItem.Created,
+                        AwardedBy = gpItem.AwardedBy,
+                        Description = gpItem.Description,
+                        GreenPointsImage = GetGreenPointImage(gpItem.Points)
+                    });
+                }
+
+
+                GreenPoints = greenPointsFinal;
+
+                IsBusy = false;
+            }
+            catch(Exception ex)
+            {
+                
+            }
+            finally
+            {
+                IsBusy = false;
+
+            }
 
 		}
 
@@ -86,7 +131,7 @@ namespace AlphaThea.ViewModels
             //This could probably be removed as its not used
 
 			var greenPoints = new ObservableCollection<GreenPoints>();
-			greenPoints = await App.UsrDataManager.RefreshUserGreenPointsAsync();
+			greenPoints = await App.UsrDataManager.RefreshUserGreenPointsAsync(StartDate, EndDate);
 
             var greenPointsFinal = new ObservableCollection<GreenPointsFinal>();
 

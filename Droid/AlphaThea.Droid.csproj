@@ -126,6 +126,15 @@
     <Reference Include="Syncfusion.SfAutoComplete.XForms">
       <HintPath>..\packages\Syncfusion.Xamarin.SfAutoComplete.15.3.0.26\lib\MonoAndroid10\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.Android">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfBusyIndicator.15.3.0.26\lib\MonoAndroid10\Syncfusion.SfBusyIndicator.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms.Android">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfBusyIndicator.15.3.0.26\lib\MonoAndroid10\Syncfusion.SfBusyIndicator.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfBusyIndicator.15.3.0.26\lib\MonoAndroid10\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlphaThea\AlphaThea.csproj">

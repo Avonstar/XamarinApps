@@ -19,9 +19,6 @@ namespace AlphaThea.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            //viewModel.UpdateHomework();
-
         }
 
         void Handle_StartDateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
