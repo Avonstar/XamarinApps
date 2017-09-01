@@ -20,12 +20,11 @@
             
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="45"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
       
-                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Start">
+                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Start" Padding="0,10,0,0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="AUTO"/>
@@ -51,14 +50,8 @@
                             DateSelected="Handle_EndDateSelected"/>
                     </Grid>
                 </StackLayout>
-                <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
-                    <syncfusion:SfBusyIndicator x:Name="busyindicator" AnimationType="DoubleCircle"
-                        HorizontalOptions="StartAndExpand"
-                        IsBusy="{Binding IsBusy}" IsEnabled="true"
-                        Title="Please wait...Loading homework data"
-                        ViewBoxWidth="45" ViewBoxHeight="45" TextColor="Maroon" />
-                </StackLayout>
-                <StackLayout Grid.Row="2" Orientation="Vertical" HorizontalOptions="Start">
+
+                <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand">
 
                 <sfgrid:SfDataGrid x:Name="homeworkGrid"
                     ItemsSource="{Binding HomeworkCollection}"
@@ -66,7 +59,8 @@
                     AutoGenerateColumns="false"
                     ColumnSizer="Star"
                     GridStyle="{StaticResource green}"
-                    VerticalOptions="FillAndExpand">
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
 
                     <sfgrid:SfDataGrid.HeaderRowHeight>
                     <OnPlatform x:TypeArguments="x:Double"
@@ -144,6 +138,7 @@
                                            LineBreakMode="WordWrap"
                                            LoadUIView="False"
                                            MappingName="body"
+                                           ColumnSizer="Auto"
                                            Padding="5, 0, 0, 0"
                                            TextAlignment="Start">
 
@@ -170,8 +165,16 @@
                 </sfgrid:SfDataGrid.Columns>
                         
             </sfgrid:SfDataGrid>
+
+            <syncfusion:SfBusyIndicator x:Name="busyindicator" AnimationType="DoubleCircle"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="{Binding IsBusy}"
+            IsBusy="{Binding IsBusy}" IsEnabled="true"
+            Title="Please wait...Loading homework data"
+            ViewBoxWidth="80" ViewBoxHeight="80" TextColor="Maroon" />
+                
             </StackLayout>
-            <Button x:Name="fetchBtn" Grid.Row="3" Text="Fetch" HorizontalOptions="EndAndExpand" Command="{Binding UpdateHomeworkCommand}"/>
+            <Button x:Name="fetchBtn" Grid.Row="2" Text="Fetch" HorizontalOptions="EndAndExpand" Command="{Binding UpdateHomeworkCommand}"/>
            
         </Grid>
 	</ContentPage.Content>

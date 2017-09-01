@@ -111,6 +111,7 @@
     <Compile Include="Models\LessonGroup.cs" />
     <Compile Include="Models\DisplayHomework.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="Helper\DateTimeExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
