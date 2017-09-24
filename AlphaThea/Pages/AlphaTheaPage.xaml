@@ -14,13 +14,13 @@
            
         </local:StudentPage>
         
-        <local:Awards Title="Awards" Icon="award.png">
+        <local:AwardsPage Title="Awards" Icon="award.png">
 
-        </local:Awards>
+        </local:AwardsPage>
 
-        <local:HomeworkPage Title="Homework" Icon="homework.png">
+        <local:HomeWorkPage Title="Homework" Icon="homework.png">
 
-        </local:HomeworkPage>
+        </local:HomeWorkPage>
 
         <local:AttendancePage Title="Attendance" Icon="time.png">
 

@@ -6,6 +6,7 @@ using Syncfusion.SfAutoComplete.XForms.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
 using UIKit;
+using Syncfusion.ListView.XForms.iOS;
 
 namespace AlphaThea.iOS
 {
@@ -22,7 +23,9 @@ namespace AlphaThea.iOS
 
             SfChartRenderer.Init();
             SfDataGridRenderer.Init();
+            SfListViewRenderer.Init();
 
+            new HtmlFormattedLabelRenderer();
 			new SfChartRenderer();
 			new SfAutoCompleteRenderer();
 			new SfPdfDocumentViewRenderer();

@@ -15,7 +15,6 @@ Padding="20">
         <customstyles:Green x:Key="green" />
     </ResourceDictionary>
 </ContentPage.Resources>
-
        
 <Grid>
     

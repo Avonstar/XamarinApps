@@ -14,6 +14,8 @@ namespace AlphaThea.ViewModels
     {
 
         private bool _isbusy = false;
+        private bool _iserror = false;
+        private string _errormsg;
         private DateTime _startdate;
         private DateTime _enddate;
         private ObservableCollection<DisplayHomework> _homework;
@@ -37,6 +39,28 @@ namespace AlphaThea.ViewModels
 			{
 				_isbusy = value;
                 OnPropertyChanged();
+			}
+
+		}
+
+		public bool IsError
+		{
+			get { return _iserror; }
+			set
+			{
+				_iserror = value;
+				OnPropertyChanged();
+			}
+
+		}
+
+		public string ErrorMsg
+		{
+			get { return _errormsg; }
+			set
+			{
+				_errormsg = value;
+				OnPropertyChanged();
 			}
 
 		}
@@ -84,14 +108,20 @@ namespace AlphaThea.ViewModels
 			await System.Threading.Tasks.Task.Delay(100);
 
             //Retrieve Lesson Groups
-			string result = null;
+			string lessonGroups = null;
+            string allPupils = null;
 
 			if (App.Current.Properties.ContainsKey("AllLessonGroups"))
 			{
-				result = App.Current.Properties["AllLessonGroups"] as string;
+				lessonGroups = App.Current.Properties["AllLessonGroups"] as string;
 			}
-
-            var lessons = JsonConvert.DeserializeObject<List<LessonGroup>>(result).ToDictionary(x => x.nid, x => x.title);
+            else
+            {
+                IsError = true;
+                ErrorMsg = "Lesson group data missing, check your intenet connection and restart the application";
+                IsBusy = false;
+                return;
+            }
 
 			string id = null;
 
@@ -100,31 +130,61 @@ namespace AlphaThea.ViewModels
 				id = Application.Current.Properties["UserId"] as string;
 
 			}
-
-            result = null;
-
-            var usrgrps = new List<UserGroups>();
+            else
+            {
+				IsError = true;
+				ErrorMsg = "UserId missing, check your intenet connection and restart the application";
+				IsBusy = false;
+				return;
+            }
 
 			if (App.Current.Properties.ContainsKey("AllPupils"))
 			{
-				result = App.Current.Properties["AllPupils"] as string;
+				allPupils = App.Current.Properties["AllPupils"] as string;
+			}
+			else
+			{
+				IsError = true;
+				ErrorMsg = "Pupil data missing, check your intenet connection and restart the application";
+				IsBusy = false;
+				return;
 			}
 
-			usrgrps = JsonConvert.DeserializeObject<List<UserGroups>>(result);
 
-            var groups = usrgrps.Where(u => u.uid == id).First().groupNodeIds;
-
-            var hmwrkList = new List<string>();
-
-            foreach(var item in groups)
+            try
             {
-                if(lessons.ContainsKey(item))
-                {
-                    hmwrkList.Add(item);
-                }
-            }
+                
+                //var lessons = JsonConvert.DeserializeObject<List<LessonGroup>>(lessonGroups).ToDictionary(x => x.nid, x => x.title);
+                var lecons = JsonConvert.DeserializeObject<List<LessonGroup>>(lessonGroups);
 
-            HomeworkCollection = await App.UsrDataManager.RefreshUserHomeworkAsync(StartDate, EndDate, hmwrkList);
+                var lessons = lecons.ToDictionary(x => x.nid, x => x.title);
+
+                var usrgrps = new List<UserGroups>();
+
+    			usrgrps = JsonConvert.DeserializeObject<List<UserGroups>>(allPupils);
+
+                var groups = usrgrps.Where(u => u.uid == id).First().groupNodeIds;
+
+                var hmwrkList = new List<string>();
+
+                foreach(var item in groups)
+                {
+                    if(lessons.ContainsKey(item))
+                    {
+                        hmwrkList.Add(item);
+                    }
+                }
+
+				HomeworkCollection = await App.UsrDataManager.RefreshUserHomeworkAsync(StartDate, EndDate, hmwrkList);
+
+			}
+			catch (Exception ex)
+			{
+				IsError = true;
+				ErrorMsg = ex.InnerException.ToString();
+				IsBusy = false;
+				return;
+			}
 
             IsBusy = false;
 			

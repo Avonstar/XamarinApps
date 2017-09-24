@@ -126,10 +126,13 @@ namespace AlphaThea.Services
 
                     homework = JsonConvert.DeserializeObject<List<DisplayHomework>>(result);
 
-                    foreach(var item in homework)
-                    {
-                        item.body=(Regex.Replace(item.body.ToString(), "<(.|\n)*?>", "")).Replace("&#39;", "'").Replace("&amp;", "&");
-                    }
+                    //foreach(var item in homework)
+                    //{
+                    //    if (item.body != null)
+                    //    {
+                    //        item.body = (Regex.Replace(item.body.ToString(), "<(.|\n)*?>", "")).Replace("&#39;", "'").Replace("&amp;", "&");
+                    //    }
+                    //}
 
                     masterhomeworklist.AddRange(homework);
 
